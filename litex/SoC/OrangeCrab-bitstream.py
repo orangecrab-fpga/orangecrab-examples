@@ -12,6 +12,9 @@ import os
 import shutil
 import argparse
 
+
+import inspect
+
 from migen import *
 from migen.genlib.resetsync import AsyncResetSynchronizer
 
@@ -67,6 +70,7 @@ class BaseSoC(SoCCore):
         # Board Revision ---------------------------------------------------------------------------
         revision = kwargs.get("revision", "0.2")
         device = kwargs.get("device", "25F")
+
         platform = orangecrab.Platform(revision=revision, device=device ,toolchain=toolchain)
 
         # Serial -----------------------------------------------------------------------------------
@@ -131,7 +135,7 @@ class BaseSoC(SoCCore):
         from litex.soc.integration.soc_core import SoCRegion
         self.bus.add_slave('usb',  self.usb0.bus, SoCRegion(origin=0x90000000, size=0x1000, cached=False))
 
-        self.constants["FLASH_BOOT_ADDRESS"] = self.mem_map['spiflash'] + (512*1024) + (512*1024)
+        self.constants["FLASH_BOOT_ADDRESS"] = self.mem_map['spiflash'] + 0x00140000
 
     # Generate the CSR for the USB
     def write_usb_csr(self, directory):
@@ -166,7 +170,8 @@ def main():
                         help="ECP5 device (default=MT41K64M16)")
     args = parser.parse_args()
 
-    soc = BaseSoC(toolchain=args.toolchain, sys_clk_freq=int(float(args.sys_clk_freq)), **soc_sdram_argdict(args))
+    print(argdict(args))
+    soc = BaseSoC(toolchain=args.toolchain, sys_clk_freq=int(float(args.sys_clk_freq)), **argdict(args))
     builder = Builder(soc, **builder_argdict(args))
     soc.write_usb_csr(builder.generated_dir)
     builder_kargs = trellis_argdict(args) if args.toolchain == "trellis" else {}
@@ -179,6 +184,14 @@ def main():
     dfu_file = os.path.join(builder.gateware_dir, "ecp5.dfu")
     shutil.copyfile(output_bitstream, dfu_file)
     os.system(f"dfu-suffix -v 1209 -p 5bf0 -a {dfu_file}")
+
+def argdict(args):
+    r = soc_sdram_argdict(args)
+    for a in ["device", "revision", "sdram_device"]:
+        arg = getattr(args, a, None)
+        if arg is not None:
+            r[a] = arg
+    return r
 
 if __name__ == "__main__":
     main()

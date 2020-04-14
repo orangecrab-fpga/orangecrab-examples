@@ -9,7 +9,7 @@ import binascii
 flash_regions_final = {
 #                                                         "0x00000000", # Bootloader
     "soc_basesoc_orangecrab/gateware/ecp_bitstream.bit":  "0x00080000", # SoC ECP5 Bitstream
-    "firmware.bin":                                       "0x00100000", # Circuit PYthon
+    "firmware.bin":                                       "0x00140000", # Circuit PYthon
 }
 
 flash_regions = {}

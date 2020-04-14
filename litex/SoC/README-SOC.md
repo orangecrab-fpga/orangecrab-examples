@@ -2,10 +2,16 @@
 
 ``` Currently under-development ``` 
 
-## Build Instructins
+## Build Instructions
+Use the --device flag if you have a non-standard ECP5 fitted 
 ```console
-$ python3 OrangeCrab-bitstream.py
+$ python3 OrangeCrab-bitstream.py [--device 85F]
  ```
+
+Right now I'm missing proper 5G support in the platform file, so use these commands if you have a 5G-85F part fitted.
+```console
+$ ecppack --spimode qspi --freq 38.8 --compress --idcode 0x81113043 --input soc_basesoc_orangecrab/gateware/top.config --bit soc_basesoc_orangecrab/gateware/ecp_bitstream.bit
+```
 
 This will invoke Litex/Migen to create a verilog file, this is then fed to yosys/nextpnr to generate a bitstream for the ECP5.
 When the synthesis is complete you will find the gateware to be loaded at "soc_basesoc_orangecrab/gateware/ecp_bitstream.bit"
@@ -26,7 +32,7 @@ $ python combine.py
  ```
 
 
-This now loads our new SoC into FLASH at `0x80000`, and CircuitPython riscv code at `0x100000`
+This now loads our new SoC into FLASH at `0x80000`, and CircuitPython riscv code at `0x140000`
 ## Flash to board
 ```console
 $ dfu-util -D combine.dfu
