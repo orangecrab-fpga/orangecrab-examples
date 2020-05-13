@@ -192,7 +192,7 @@ def main():
     parser.add_argument("--device", default="25F",
                         help="ECP5 device (default=25F)")
     parser.add_argument("--sdram-device", default="MT41K64M16",
-                        help="ECP5 device (default=MT41K64M16)")
+                        help="SDRAM device (default=MT41K64M16)")
     parser.add_argument(
         "--update-firmware", default=False, action='store_true',
         help="compile firmware and update existing gateware"
