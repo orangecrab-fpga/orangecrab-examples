@@ -167,7 +167,7 @@ def main():
     parser.add_argument("--device", default="25F",
                         help="ECP5 device (default=25F)")
     parser.add_argument("--sdram-device", default="MT41K64M16",
-                        help="ECP5 device (default=MT41K64M16)")
+                        help="SDRAM device (default=MT41K64M16)")
     args = parser.parse_args()
 
     print(argdict(args))
