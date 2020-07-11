@@ -56,9 +56,9 @@ class RGB(Module, AutoCSR):
     def __init__(self, rgb_pins):
         
 
-        self._r = CSRStorage(8)
-        self._g = CSRStorage(8, reset=255)
-        self._b = CSRStorage(8)
+        self.r = CSRStorage(8, reset=255)
+        self.g = CSRStorage(8)
+        self.b = CSRStorage(8)
 
 
         self._div_m = CSRStorage(32)
@@ -98,7 +98,7 @@ class RGB(Module, AutoCSR):
         ]
 
         self.comb += [
-            self.pdm_r.level.eq(self._r.storage),
-            self.pdm_g.level.eq(self._g.storage),
-            self.pdm_b.level.eq(self._b.storage)
+            self.pdm_r.level.eq(self.r.storage),
+            self.pdm_g.level.eq(self.g.storage),
+            self.pdm_b.level.eq(self.b.storage)
         ]
