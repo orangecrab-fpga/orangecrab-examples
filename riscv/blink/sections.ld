@@ -6,7 +6,7 @@ __DYNAMIC = 0;
 /* Note: RISCV code is stored in the SPI FLASH */
 /* 0x80000 is the offset the bootloader jumps to */
 MEMORY {
-	sram : ORIGIN = 0x01000000, LENGTH = 0x00004000
+	sram : ORIGIN = 0x10000000, LENGTH = 0x00004000
 	spiflash : ORIGIN = 0x20000000 + 0x80000, LENGTH = 0x00100000
 }
 

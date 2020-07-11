@@ -15,7 +15,7 @@ void msleep(int ms);
 int main() {
 
     /* This write sets up RAW output to the LED */
-    rgb_ctrl_write(0x38);
+    rgb_config_write(0x00);
 
     while(1){
 
@@ -23,12 +23,16 @@ int main() {
         msleep(200);
 
         /* Turn LED ON */
-        rgb_raw_write(0x07);
+        rgb__r_write(0);
+        rgb__b_write(255);
+        rgb__g_write(255);
+        
 
         msleep(200);
 
         /* Turn LED OFF */
-        rgb_raw_write(0x00);
+        rgb__b_write(0);
+        rgb__g_write(0);
     }
     
     return 0;
