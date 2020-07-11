@@ -1,0 +1,19 @@
+[submodule "litex/deps/valentyusb"]
+	path = litex/deps/valentyusb
+	url = https://github.com/gregdavill/valentyusb
+	branch = hw_cdc_eptri
+[submodule "litex/deps/litedram"]
+	path = litex/deps/litedram
+	url = https://github.com/enjoy-digital/litedram
+[submodule "litex/deps/litex"]
+	path = litex/deps/litex
+	url = https://github.com/enjoy-digital/litex
+[submodule "litex/deps/migen"]
+	path = litex/deps/migen
+	url = https://github.com/m-labs/migen
+[submodule "litex/deps/litex-boards"]
+	path = litex/deps/litex-boards
+	url = https://github.com/litex-hub/litex-boards
+[submodule "litex/deps/pythondata-cpu-vexriscv"]
+	path = litex/deps/pythondata-cpu-vexriscv
+	url = https://github.com/litex-hub/pythondata-cpu-vexriscv
