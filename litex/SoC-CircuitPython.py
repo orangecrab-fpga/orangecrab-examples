@@ -36,7 +36,7 @@ from litex.soc.integration.soc_core import *
 from litex.soc.integration.soc_sdram import *
 from litex.soc.integration.builder import *
 
-from litedram.modules import MT41K64M16, MT41K128M16, MT41K256M16
+from litedram.modules import MT41K64M16, MT41K128M16, MT41K256M16, MT41K512M16
 from litedram.phy import ECP5DDRPHY
 
 from litex.soc.cores.spi import SPIMaster
@@ -241,7 +241,8 @@ class BaseSoC(SoCCore):
             available_sdram_modules = {
                 'MT41K64M16': MT41K64M16,
                 'MT41K128M16': MT41K128M16,
-                'MT41K256M16': MT41K256M16
+                'MT41K256M16': MT41K256M16,
+                'MT41K512M16': MT41K512M16,
             }
             sdram_module = available_sdram_modules.get(
                 kwargs.get("sdram_device", "MT41K64M16"))
@@ -263,8 +264,10 @@ class BaseSoC(SoCCore):
                 l2_cache_min_data_width = kwargs.get("min_l2_data_width", 128),
                 l2_cache_reverse        = True
             )
-            self.comb += ddr_pads.vccio.eq(1)
-            self.comb += ddr_pads.gnd.eq(0)
+            if hasattr(ddr_pads, 'vccio'):
+                self.comb += ddr_pads.vccio.eq(1)
+            if hasattr(ddr_pads, 'gnd'):
+                self.comb += ddr_pads.gnd.eq(0)
 
         # Add extra pin definitions
         #platform.add_extension(extras)
@@ -272,7 +275,10 @@ class BaseSoC(SoCCore):
         # RGB LED
         self.submodules.rgb = RGB(platform.request("rgb_led", 0))
         #self.submodules.gpio = GPIOTristateCustom(platform.request("gpio", 0))
-        self.submodules.button = GPIOIn(platform.request("usr_btn"))
+        try:
+            self.submodules.button = GPIOIn(platform.request("usr_btn"))
+        except:
+            ...
         
         # Analog Mux
         #self.submodules.asense = AnalogSense(platform.request("analog"))

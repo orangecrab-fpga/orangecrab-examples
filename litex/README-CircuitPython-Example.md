@@ -3,9 +3,11 @@
 ``` Currently under-development ``` 
 
 ## Build Instructions
+> Add \``--revision 0.1`\` argument when running this to build for the r0.1 board
 ```console
 $ python3 SoC-CircuitPython.py
  ```
+
 If this is the first time running this command it will pull in submodules of LiteX and all the dependancies requiled to build. Then this will invoke LiteX/Migen to generate verilog and fed it to yosys/nextpnr to generate a bitstream for the ECP5.
 
 When the synthesis is complete you will find the gateware to be loaded at `"build/orangecrab/gateware/orangecrab.bit"`
