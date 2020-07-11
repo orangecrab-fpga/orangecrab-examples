@@ -1,0 +1,12 @@
+__pycache__\
+*.pyc
+
+*.bin
+*.dfu
+*.elf
+*.lst
+*.map
+
+litex/build*
+
+tmp/
