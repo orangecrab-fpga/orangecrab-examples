@@ -2,6 +2,9 @@
 
 ``` Currently under-development ``` 
 
+> Note there is currently a potential Yosys bug that effects building LiteX SoCs. Please use an earlier build of yosys (Before Jul 1st). You can also find prebuilt binaries on the prebuilt branch: https://github.com/gregdavill/OrangeCrab-examples/blob/prebuilt/litex
+
+
 ## Build Instructions
 > Add \``--revision 0.1`\` argument when running this to build for the r0.1 board
 ```console
