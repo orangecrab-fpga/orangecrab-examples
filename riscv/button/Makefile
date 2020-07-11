@@ -9,7 +9,7 @@ dfu: blink_fw.dfu
 	dfu-util -D blink_fw.dfu
 
 blink_fw.elf: start.s main.c
-	$(CROSS)gcc $(CFLAGS) -march=rv32im -mabi=ilp32 -Wl,-Bstatic,-T,sections.ld,--strip-debug -ffreestanding -nostdlib -I. -o blink_fw.elf start.s main.c
+	$(CROSS)gcc $(CFLAGS) -march=rv32i -mabi=ilp32 -Wl,-Bstatic,-T,sections.ld,--strip-debug -ffreestanding -nostdlib -I. -o blink_fw.elf start.s main.c
 
 blink_fw.hex: blink_fw.elf
 	$(CROSS)objcopy -O verilog blink_fw.elf blink_fw.hex
