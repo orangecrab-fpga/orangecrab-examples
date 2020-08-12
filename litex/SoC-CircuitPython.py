@@ -302,6 +302,9 @@ class BaseSoC(SoCCore):
 
         self.constants["FLASH_BOOT_ADDRESS"] = self.mem_map['spiflash'] + 0x00100000
 
+        # drive PROGRAMN high
+        self.comb += platform.request('rst_n').eq(1)
+
     # Generate the CSR for the USB
     def write_usb_csr(self, directory):
         csrs = self.usb0.get_csr()
