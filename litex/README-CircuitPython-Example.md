@@ -52,7 +52,7 @@ $ dfu-util -D combine.dfu
 
 ## CircuitPython is now running!
 
-If you run dmesg, you shloud see a new ttyACM0 attached, as well as a Mass storage device
+The SoC will take a few seconds to start up, but if you run dmesg, you should see a new ttyACM0 attached, as well as a Mass storage device
 ```console
 $ dmesg
 [3660.128564] usb 1-1: new full-speed USB device number 85 using xhci_hcd
