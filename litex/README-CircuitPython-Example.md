@@ -5,6 +5,24 @@
 > Note there is currently a potential Yosys bug that effects building LiteX SoCs. Please use an earlier build of yosys (Before Jul 1st). You can also find prebuilt binaries on the prebuilt branch: https://github.com/gregdavill/OrangeCrab-examples/blob/prebuilt/litex
 
 
+## Setup Instructions
+Before building the LiteX SoC, you must install a suitable toolchain, for example GCC.
+Download a package from [sifive.com/software](https://www.sifive.com/software), extract it, and add it to your path.
+The example below will install GCC v8.3.0 on an Ubuntu system.
+
+```console
+$ curl -LO "https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14.tar.gz"
+$ tar -xvf riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14.tar.gz
+$ export PATH="$(readlink -f ./riscv64-unknown-elf-gcc-8.3.0-2020.04.0-x86_64-linux-ubuntu14/bin):${PATH}"
+$ riscv64-unknown-elf-gcc -v
+```
+
+It is also necessary to install the `pythondata-software-compiler_rt` python package, as follows:
+
+```console
+$ pip install --upgrade git+https://github.com/litex-hub/pythondata-software-compiler_rt.git
+```
+
 ## Build Instructions
 > Add \``--revision 0.1`\` argument when running this to build for the r0.1 board
 ```console
@@ -34,7 +52,7 @@ $ dfu-util -D combine.dfu
 
 ## CircuitPython is now running!
 
-If you run dmesg, you shloud see a new ttyACM0 attached, as well as a Mass storage device
+The SoC will take a few seconds to start up, but if you run dmesg, you should see a new ttyACM0 attached, as well as a Mass storage device
 ```console
 $ dmesg
 [3660.128564] usb 1-1: new full-speed USB device number 85 using xhci_hcd
