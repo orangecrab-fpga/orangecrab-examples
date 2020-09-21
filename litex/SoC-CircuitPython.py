@@ -239,22 +239,25 @@ class BaseSoC(SoCCore):
         # DDR3 SDRAM -------------------------------------------------------------------------------
         if not self.integrated_main_ram_size:
             available_sdram_modules = {
-                'MT41K64M16': MT41K64M16,
-                'MT41K128M16': MT41K128M16,
-                'MT41K256M16': MT41K256M16,
-                'MT41K512M16': MT41K512M16,
+                "MT41K64M16":  MT41K64M16,
+                "MT41K128M16": MT41K128M16,
+                "MT41K256M16": MT41K256M16,
+                "MT41K512M16": MT41K512M16,
             }
-            sdram_module = available_sdram_modules.get(
-                kwargs.get("sdram_device", "MT41K64M16"))
+            sdram_module = available_sdram_modules.get(sdram_device)
 
-            ddr_pads = platform.request("ddram")
+            ddram_pads = platform.request("ddram")
             self.submodules.ddrphy = ECP5DDRPHY(
-                ddr_pads,
-                sys_clk_freq=sys_clk_freq)
+                pads         = ddram_pads,
+                sys_clk_freq = sys_clk_freq)
+            self.ddrphy.settings.rtt_nom = "disabled"
             self.add_csr("ddrphy")
-            self.add_constant("ECP5DDRPHY")
-            self.comb += crg.stop.eq(self.ddrphy.init.stop)
-            self.comb += crg.reset.eq(self.ddrphy.init.reset)
+            if hasattr(ddram_pads, "vccio"):
+                self.comb += ddram_pads.vccio.eq(0b111111)
+            if hasattr(ddram_pads, "gnd"):
+                self.comb += ddram_pads.gnd.eq(0)
+            self.comb += self.crg.stop.eq(self.ddrphy.init.stop)
+            self.comb += self.crg.reset.eq(self.ddrphy.init.reset)
             self.add_sdram("sdram",
                 phy                     = self.ddrphy,
                 module                  = sdram_module(sys_clk_freq, "1:2"),
@@ -264,13 +267,6 @@ class BaseSoC(SoCCore):
                 l2_cache_min_data_width = kwargs.get("min_l2_data_width", 128),
                 l2_cache_reverse        = True
             )
-            if hasattr(ddr_pads, 'vccio'):
-                self.comb += ddr_pads.vccio.eq(1)
-            if hasattr(ddr_pads, 'gnd'):
-                self.comb += ddr_pads.gnd.eq(0)
-
-        # Add extra pin definitions
-        #platform.add_extension(extras)
 
         # RGB LED
         self.submodules.rgb = RGB(platform.request("rgb_led", 0))
@@ -283,6 +279,9 @@ class BaseSoC(SoCCore):
         # Analog Mux
         #self.submodules.asense = AnalogSense(platform.request("analog"))
         
+        # drive PROGRAMN HIGH
+        self.comb += platform.request("rst_n").eq(1)
+
         # The litex SPI module supports memory-mapped reads, as well as a bit-banged mode
         # for doing writes.
         spi_pads = platform.request("spiflash4x")
