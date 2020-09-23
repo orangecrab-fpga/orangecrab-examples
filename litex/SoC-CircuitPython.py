@@ -244,7 +244,7 @@ class BaseSoC(SoCCore):
                 "MT41K256M16": MT41K256M16,
                 "MT41K512M16": MT41K512M16,
             }
-            sdram_module = available_sdram_modules.get(sdram_device)
+            sdram_module = available_sdram_modules.get(kwargs.get("sdram_device", "MT41K64M16"))
 
             ddram_pads = platform.request("ddram")
             self.submodules.ddrphy = ECP5DDRPHY(
@@ -300,9 +300,6 @@ class BaseSoC(SoCCore):
         self.bus.add_slave('usb',  self.usb0.bus, SoCRegion(origin=0x90000000, size=0x1000, cached=False))
 
         self.constants["FLASH_BOOT_ADDRESS"] = self.mem_map['spiflash'] + 0x00100000
-
-        # drive PROGRAMN high
-        self.comb += platform.request('rst_n').eq(1)
 
     # Generate the CSR for the USB
     def write_usb_csr(self, directory):
