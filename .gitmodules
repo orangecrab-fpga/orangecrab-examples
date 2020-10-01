@@ -17,3 +17,6 @@
 [submodule "litex/deps/pythondata-cpu-vexriscv"]
 	path = litex/deps/pythondata-cpu-vexriscv
 	url = https://github.com/litex-hub/pythondata-cpu-vexriscv
+[submodule "litex/deps/pythondata-software-compiler_rt"]
+	path = litex/deps/pythondata-software-compiler_rt
+	url = https://github.com/litex-hub/pythondata-software-compiler_rt.git
