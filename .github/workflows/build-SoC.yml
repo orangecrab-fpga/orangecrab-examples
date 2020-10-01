@@ -1,0 +1,44 @@
+name: build-SoC
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-SoC:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        fetch-depth: 2
+
+    - name: configure fpga-toolchain
+      run: |
+        export VERSION=nightly-20200930
+        wget https://github.com/open-tool-forge/fpga-toolchain/releases/download/$VERSION/fpga-toolchain-linux_x86_64-$VERSION.tar.xz
+        tar -xf fpga-toolchain-linux_x86_64-$VERSION.tar.xz
+        rm -rf fpga-toolchain-linux_x86_64-$VERSION.tar.xz
+        echo "$(pwd)/fpga-toolchain/bin" >> $GITHUB_PATH
+
+    - name: configure riscv-toolchain
+      run: |
+        wget https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz
+        tar -xzf riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz
+        rm -rf riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz
+        echo "$(pwd)/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin" >> $GITHUB_PATH
+
+    - name: Litex Build
+      working-directory: ./litex
+      run: |
+        python3 -m pip install Pillow 
+        python3 SoC-CircuitPython.py
+
+    - name: Upload bitstream
+      uses: actions/upload-artifact@v2
+      with:
+        name: OrangeCrab SoC Bitstream
+        path: ${{ github.workspace }}/litex/build/orangecrab/gateware/orangecrab.dfu
+
+      

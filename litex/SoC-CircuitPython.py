@@ -162,7 +162,6 @@ class CRG(Module):
                 i_CLKI    = self.cd_sys2x.clk,
                 i_RST     = self.reset,
                 o_CDIVX   = self.cd_sys.clk),
-            AsyncResetSynchronizer(self.cd_init,  ~por_done | ~pll.locked),
             AsyncResetSynchronizer(self.cd_sys,   ~por_done | ~pll.locked | self.reset),
             AsyncResetSynchronizer(self.cd_sys2x, ~por_done | ~pll.locked | self.reset),
             AsyncResetSynchronizer(self.cd_sys2x_i, ~por_done | ~pll.locked | self.reset),
@@ -177,10 +176,6 @@ class CRG(Module):
             usb_pll.register_clkin(clk48, 48e6)
             usb_pll.create_clkout(self.cd_usb_48, 48e6)
             usb_pll.create_clkout(self.cd_usb_12, 12e6)
-            self.specials += [
-                AsyncResetSynchronizer(self.cd_usb_48,  ~por_done | ~usb_pll.locked),
-                AsyncResetSynchronizer(self.cd_usb_12,  ~por_done | ~usb_pll.locked)
-            ]
 
 
 
@@ -192,8 +187,7 @@ class BaseSoC(SoCCore):
         "crg":            1,  # user
         "identifier_mem": 4,  # provided by default (optional)
         "timer0":         5,  # provided by default (optional)
-       
-        "rgb":       10,
+        "rgb":            10,
         "gpio":           11,
         "self_reset":     12,
         "version":        14,
@@ -225,10 +219,10 @@ class BaseSoC(SoCCore):
 
         platform = orangecrab.Platform(revision=revision, device=device ,toolchain=toolchain)
 
-        platform.add_extension(orangecrab.feather_serial)
+        #platform.add_extension(orangecrab.feather_serial)
 
         # Disconnect Serial Debug (Stub required so BIOS is kept happy)
-        #kwargs['uart_name']="stub"
+        kwargs['uart_name']="stub"
 
         # SoCCore ----------------------------------------------------------------------------------
         SoCCore.__init__(self, platform, clk_freq=sys_clk_freq, csr_data_width=32, **kwargs)
@@ -337,7 +331,7 @@ def main():
 
     soc.write_usb_csr(builder.generated_dir)
 
-    #generate_docs(soc, "build/documentation/", project_name="OrangeCrab Test SoC", author="Greg Davill")
+    generate_docs(soc, "build/documentation/", project_name="OrangeCrab Test SoC", author="Greg Davill")
         
     # Build gateware
     builder_kargs = trellis_argdict(args) if args.toolchain == "trellis" else {}
@@ -350,11 +344,10 @@ def main():
     # create compressed bitstream (ECP5 specific), (Note that `-spimode qspi` sometimes doesn't load over JTAG)
     output_bitstream = os.path.join(builder.gateware_dir, f"{soc.platform.name}.bit")
     os.system(f"ecppack --freq 38.8 --spimode qspi --compress --input {input_config} --bit {output_bitstream}")
-    #os.system(f"ecppack --freq 38.8 --compress --input {input_config} --bit {output_bitstream}")
 
     dfu_file = os.path.join(builder.gateware_dir, f"{soc.platform.name}.dfu")
     shutil.copyfile(output_bitstream, dfu_file)
-    os.system(f"dfu-suffix -v 1209 -p 5bf0 -a {dfu_file}")
+    os.system(f"dfu-suffix -v 1209 -p 5af0 -a {dfu_file}")
 
 def argdict(args):
     r = soc_sdram_argdict(args)
