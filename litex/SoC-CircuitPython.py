@@ -51,15 +51,17 @@ from migen.genlib.cdc import MultiReg
 from modules.rgb import RGB
 from modules.analog import AnalogSense
 from modules.csr_cdc import CSRClockDomainWrapper
+from modules.io_block import IOPort
 
 from litex.soc.cores import spi_flash
 from litex.soc.cores.gpio import GPIOTristate, GPIOOut, GPIOIn
 
 from valentyusb.usbcore import io as usbio
 
+
 # connect all remaninig GPIO pins out
 extras = [
-    ("gpio", 0, Pins("GPIO:1 GPIO:5 GPIO:6 GPIO:9 GPIO:10 GPIO:11 GPIO:12 GPIO:13  GPIO:18 GPIO:19 GPIO:20 GPIO:21"), 
+    ("gpio", 0, Pins("GPIO:0 GPIO:1 GPIO:5 GPIO:6 GPIO:9 GPIO:10 GPIO:11 GPIO:12 GPIO:13  GPIO:18 GPIO:19 GPIO:20 GPIO:21"), 
         IOStandard("LVCMOS33"), Misc("PULLMODE=DOWN")),
     ("analog", 0,
         Subsignal("mux", Pins("F4 F3 F2 H1")),
@@ -70,41 +72,6 @@ extras = [
         IOStandard("LVCMOS33")
     )
 ]
-
-class GPIOTristateCustom(Module, AutoCSR):
-    def __init__(self, pads):
-        nbits     = len(pads)
-        fields=[
-                CSRField(str("io6"), 1, 6  ,description="Control for I/O pin 6"),
-                CSRField(str("io9"), 1, 9  ,description="Control for I/O pin 9"),
-                CSRField(str("io10"), 1, 10,description="Control for I/O pin 10"),
-                CSRField(str("io11"), 1, 11,description="Control for I/O pin 11"),
-                CSRField(str("io12"), 1, 12,description="Control for I/O pin 12"),
-                CSRField(str("io13"), 1, 13,description="Control for I/O pin 13"),
-                CSRField(str("io18"), 1, 18,description="Control for I/O pin 18"),
-                CSRField(str("io19"), 1, 19,description="Control for I/O pin 19"),
-                CSRField(str("io20"), 1, 20,description="Control for I/O pin 10"),
-                CSRField(str("io21"), 1, 21,description="Control for I/O pin 21"),
-            ]
-
-        self._oe  = CSRStorage(nbits, description="""GPIO Tristate(s) Control.
-        Write ``1`` enable output driver""", fields=fields)
-        self._in  = CSRStatus(nbits,  description="""GPIO Input(s) Status.
-        Input value of IO pad as read by the FPGA""", fields=fields)
-        self._out = CSRStorage(nbits, description="""GPIO Ouptut(s) Control.
-        Value loaded into the output driver""", fields=fields)
-
-        # # #
-
-        _pads = Signal(nbits)
-        self.comb += _pads.eq(pads)
-
-        for i,f in enumerate(fields):
-            t = TSTriple()
-            self.specials += t.get_tristate(_pads[i])
-            self.comb += t.oe.eq(self._oe.storage[f.offset])
-            self.comb += t.o.eq(self._out.storage[f.offset])
-            self.specials += MultiReg(t.i, self._in.status[f.offset])
 
 
 # CRG ---------------------------------------------------------------------------------------------
@@ -219,7 +186,7 @@ class BaseSoC(SoCCore):
 
         platform = orangecrab.Platform(revision=revision, device=device ,toolchain=toolchain)
 
-        #platform.add_extension(orangecrab.feather_serial)
+        platform.add_extension(extras)
 
         # Disconnect Serial Debug (Stub required so BIOS is kept happy)
         kwargs['uart_name']="stub"
@@ -265,6 +232,9 @@ class BaseSoC(SoCCore):
         # RGB LED
         self.submodules.rgb = RGB(platform.request("rgb_led", 0))
         #self.submodules.gpio = GPIOTristateCustom(platform.request("gpio", 0))
+
+        self.submodules.gpio= IOPort(platform.request("gpio",0))
+
         try:
             self.submodules.button = GPIOIn(platform.request("usr_btn"))
         except:
@@ -324,20 +294,26 @@ def main():
                         help="ECP5 device (default=25F)")
     parser.add_argument("--sdram-device", default="MT41K64M16",
                         help="ECP5 device (default=MT41K64M16)")
+    parser.add_argument("--docs-only", default=False, action='store_true',
+                        help="Create docs")
     args = parser.parse_args()
 
     soc = BaseSoC(toolchain=args.toolchain, sys_clk_freq=int(float(args.sys_clk_freq)),**argdict(args))
+    
+    if args.docs_only:
+        args.no_compile_software = True
+        args.no_compile_gateware = True
     builder = Builder(soc, **builder_argdict(args))
 
     soc.write_usb_csr(builder.generated_dir)
 
-    generate_docs(soc, "build/documentation/", project_name="OrangeCrab Test SoC", author="Greg Davill")
         
     # Build gateware
     builder_kargs = trellis_argdict(args) if args.toolchain == "trellis" else {}
     vns = builder.build(**builder_kargs)
     soc.do_exit(vns)   
 
+    generate_docs(soc, "build/documentation/", project_name="OrangeCrab Test SoC", author="Greg Davill")
 
     input_config = os.path.join(builder.output_dir, "gateware", f"{soc.platform.name}.config")
 
