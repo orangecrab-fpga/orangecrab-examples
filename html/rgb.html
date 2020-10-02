@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RGB &#8212; OrangeCrab Test SoC  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/default.js"></script>
+    <script src="_static/WaveDrom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GPIO" href="gpio.html" />
+    <link rel="prev" title="SDRAM" href="sdram.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="rgb">
+<h1>RGB<a class="headerlink" href="#rgb" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="register-listing-for-rgb">
+<h2>Register Listing for RGB<a class="headerlink" href="#register-listing-for-rgb" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head"><p>Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#rgb-r"><span class="std std-ref">RGB_R</span></a></p></td>
+<td><p><a class="reference internal" href="#rgb-r"><span class="std std-ref">0x82005000</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#rgb-g"><span class="std std-ref">RGB_G</span></a></p></td>
+<td><p><a class="reference internal" href="#rgb-g"><span class="std std-ref">0x82005004</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#rgb-b"><span class="std std-ref">RGB_B</span></a></p></td>
+<td><p><a class="reference internal" href="#rgb-b"><span class="std std-ref">0x82005008</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#rgb-div-m"><span class="std std-ref">RGB_DIV_M</span></a></p></td>
+<td><p><a class="reference internal" href="#rgb-div-m"><span class="std std-ref">0x8200500c</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#rgb-config"><span class="std std-ref">RGB_CONFIG</span></a></p></td>
+<td><p><a class="reference internal" href="#rgb-config"><span class="std std-ref">0x82005010</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="rgb-r">
+<h3>RGB_R<a class="headerlink" href="#rgb-r" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005000 + 0x0 = 0x82005000</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "r[7:0]", "attr": 'reset: 255', "bits": 8},
+        {"bits": 24},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rgb-g">
+<h3>RGB_G<a class="headerlink" href="#rgb-g" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005000 + 0x4 = 0x82005004</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "g[7:0]", "bits": 8},
+        {"bits": 24},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rgb-b">
+<h3>RGB_B<a class="headerlink" href="#rgb-b" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005000 + 0x8 = 0x82005008</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "b[7:0]", "bits": 8},
+        {"bits": 24},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rgb-div-m">
+<h3>RGB_DIV_M<a class="headerlink" href="#rgb-div-m" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005000 + 0xc = 0x8200500c</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "div_m[31:0]", "bits": 32}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="rgb-config">
+<h3>RGB_CONFIG<a class="headerlink" href="#rgb-config" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005000 + 0x10 = 0x82005010</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "breath",  "bits": 1},
+        {"name": "rainbow",  "bits": 1},
+        {"bits": 30}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>BREATH</p></td>
+<td><p>Modulate output with a breath effect</p></td>
+</tr>
+<tr class="row-odd"><td><p>[1]</p></td>
+<td><p>RAINBOW</p></td>
+<td><p>Modulate output with rainbow</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+    <script type="text/javascript">
+        function init() {
+            WaveDrom.ProcessAll();
+        }
+        window.onload = init;
+    </script>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OrangeCrab Test SoC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrupts.html">Interrupt Controller</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer0.html">TIMER0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart.html">UART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddrphy.html">DDRPHY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdram.html">SDRAM</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpio.html">GPIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lxspi.html">LXSPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">BUTTON</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="sdram.html" title="previous chapter">SDRAM</a></li>
+      <li>Next: <a href="gpio.html" title="next chapter">GPIO</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Greg Davill.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/rgb.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

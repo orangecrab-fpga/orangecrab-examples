@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LXSPI &#8212; OrangeCrab Test SoC  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/default.js"></script>
+    <script src="_static/WaveDrom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BUTTON" href="button.html" />
+    <link rel="prev" title="GPIO" href="gpio.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="lxspi">
+<h1>LXSPI<a class="headerlink" href="#lxspi" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="register-listing-for-lxspi">
+<h2>Register Listing for LXSPI<a class="headerlink" href="#register-listing-for-lxspi" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 54%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head"><p>Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#lxspi-bitbang"><span class="std std-ref">LXSPI_BITBANG</span></a></p></td>
+<td><p><a class="reference internal" href="#lxspi-bitbang"><span class="std std-ref">0x82007800</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lxspi-miso"><span class="std std-ref">LXSPI_MISO</span></a></p></td>
+<td><p><a class="reference internal" href="#lxspi-miso"><span class="std std-ref">0x82007804</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#lxspi-bitbang-en"><span class="std std-ref">LXSPI_BITBANG_EN</span></a></p></td>
+<td><p><a class="reference internal" href="#lxspi-bitbang-en"><span class="std std-ref">0x82007808</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="lxspi-bitbang">
+<h3>LXSPI_BITBANG<a class="headerlink" href="#lxspi-bitbang" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82007800 + 0x0 = 0x82007800</cite></p>
+<blockquote>
+<div><p>Bitbang controls for SPI output.  Only standard 1x SPI is supported, and as a
+result all four wires are ganged together.  This means that it is only possible
+to perform half-duplex operations, using this SPI core.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "mosi",  "bits": 1},
+        {"name": "clk",  "bits": 1},
+        {"name": "cs_n",  "bits": 1},
+        {"name": "dir",  "bits": 1},
+        {"bits": 28}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 83%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>MOSI</p></td>
+<td><p>Output value for MOSI pin, valid whenever <code class="docutils literal notranslate"><span class="pre">dir</span></code> is <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[1]</p></td>
+<td><p>CLK</p></td>
+<td><p>Output value for SPI CLK pin.</p></td>
+</tr>
+<tr class="row-even"><td><p>[2]</p></td>
+<td><p>CS_N</p></td>
+<td><p>Output value for SPI CSn pin.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[3]</p></td>
+<td><p>DIR</p></td>
+<td><p>Sets the direction for <em>ALL</em> SPI data pins except CLK and CSn.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 78%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>SPI pins are all output</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>SPI pins are all input</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="lxspi-miso">
+<h3>LXSPI_MISO<a class="headerlink" href="#lxspi-miso" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82007800 + 0x4 = 0x82007804</cite></p>
+<blockquote>
+<div><p>Incoming value of MISO signal.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "miso", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="lxspi-bitbang-en">
+<h3>LXSPI_BITBANG_EN<a class="headerlink" href="#lxspi-bitbang-en" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82007800 + 0x8 = 0x82007808</cite></p>
+<blockquote>
+<div><p>Write a <code class="docutils literal notranslate"><span class="pre">1</span></code> here to disable memory-mapped mode and enable bitbang mode.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "bitbang_en", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+    <script type="text/javascript">
+        function init() {
+            WaveDrom.ProcessAll();
+        }
+        window.onload = init;
+    </script>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OrangeCrab Test SoC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrupts.html">Interrupt Controller</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer0.html">TIMER0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart.html">UART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddrphy.html">DDRPHY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdram.html">SDRAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rgb.html">RGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpio.html">GPIO</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">LXSPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">BUTTON</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="gpio.html" title="previous chapter">GPIO</a></li>
+      <li>Next: <a href="button.html" title="next chapter">BUTTON</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Greg Davill.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/lxspi.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

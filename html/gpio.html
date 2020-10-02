@@ -1,0 +1,1193 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GPIO &#8212; OrangeCrab Test SoC  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/default.js"></script>
+    <script src="_static/WaveDrom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="LXSPI" href="lxspi.html" />
+    <link rel="prev" title="RGB" href="rgb.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="gpio">
+<h1>GPIO<a class="headerlink" href="#gpio" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="register-listing-for-gpio">
+<h2>Register Listing for GPIO<a class="headerlink" href="#register-listing-for-gpio" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head"><p>Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#gpio-oe"><span class="std std-ref">GPIO_OE</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-oe"><span class="std std-ref">0x82005800</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gpio-in"><span class="std std-ref">GPIO_IN</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-in"><span class="std std-ref">0x82005804</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gpio-out"><span class="std std-ref">GPIO_OUT</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-out"><span class="std std-ref">0x82005808</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gpio-alt0"><span class="std std-ref">GPIO_ALT0</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt0"><span class="std std-ref">0x8200580c</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gpio-alt1"><span class="std std-ref">GPIO_ALT1</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt1"><span class="std std-ref">0x82005810</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gpio-alt5"><span class="std std-ref">GPIO_ALT5</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt5"><span class="std std-ref">0x82005814</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gpio-alt6"><span class="std std-ref">GPIO_ALT6</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt6"><span class="std std-ref">0x82005818</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gpio-alt9"><span class="std std-ref">GPIO_ALT9</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt9"><span class="std std-ref">0x8200581c</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gpio-alt10"><span class="std std-ref">GPIO_ALT10</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt10"><span class="std std-ref">0x82005820</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gpio-alt11"><span class="std std-ref">GPIO_ALT11</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt11"><span class="std std-ref">0x82005824</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gpio-alt12"><span class="std std-ref">GPIO_ALT12</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt12"><span class="std std-ref">0x82005828</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gpio-alt13"><span class="std std-ref">GPIO_ALT13</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt13"><span class="std std-ref">0x8200582c</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gpio-alt18"><span class="std std-ref">GPIO_ALT18</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt18"><span class="std std-ref">0x82005830</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gpio-alt19"><span class="std std-ref">GPIO_ALT19</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt19"><span class="std std-ref">0x82005834</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#gpio-alt20"><span class="std std-ref">GPIO_ALT20</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt20"><span class="std std-ref">0x82005838</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#gpio-alt21"><span class="std std-ref">GPIO_ALT21</span></a></p></td>
+<td><p><a class="reference internal" href="#gpio-alt21"><span class="std std-ref">0x8200583c</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="gpio-oe">
+<h3>GPIO_OE<a class="headerlink" href="#gpio-oe" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x0 = 0x82005800</cite></p>
+<blockquote>
+<div><p>GPIO Tristate(s) Control. Write <code class="docutils literal notranslate"><span class="pre">1</span></code> enable output driver</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "io0",  "bits": 1},
+        {"name": "io1",  "bits": 1},
+        {"bits": 3},
+        {"name": "io5",  "bits": 1},
+        {"name": "io6",  "bits": 1},
+        {"bits": 2},
+        {"name": "io9",  "bits": 1},
+        {"name": "io10",  "bits": 1},
+        {"name": "io11",  "bits": 1},
+        {"name": "io12",  "bits": 1},
+        {"name": "io13",  "bits": 1},
+        {"bits": 4},
+        {"name": "io18",  "bits": 1},
+        {"name": "io19",  "bits": 1},
+        {"name": "io20",  "bits": 1},
+        {"name": "io21",  "bits": 1},
+        {"bits": 10}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 16%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>IO0</p></td>
+<td><p>Control for I/O pin 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>[1]</p></td>
+<td><p>IO1</p></td>
+<td><p>Control for I/O pin 1</p></td>
+</tr>
+<tr class="row-even"><td><p>[5]</p></td>
+<td><p>IO5</p></td>
+<td><p>Control for I/O pin 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>[6]</p></td>
+<td><p>IO6</p></td>
+<td><p>Control for I/O pin 6</p></td>
+</tr>
+<tr class="row-even"><td><p>[9]</p></td>
+<td><p>IO9</p></td>
+<td><p>Control for I/O pin 9</p></td>
+</tr>
+<tr class="row-odd"><td><p>[10]</p></td>
+<td><p>IO10</p></td>
+<td><p>Control for I/O pin 10</p></td>
+</tr>
+<tr class="row-even"><td><p>[11]</p></td>
+<td><p>IO11</p></td>
+<td><p>Control for I/O pin 11</p></td>
+</tr>
+<tr class="row-odd"><td><p>[12]</p></td>
+<td><p>IO12</p></td>
+<td><p>Control for I/O pin 12</p></td>
+</tr>
+<tr class="row-even"><td><p>[13]</p></td>
+<td><p>IO13</p></td>
+<td><p>Control for I/O pin 13</p></td>
+</tr>
+<tr class="row-odd"><td><p>[18]</p></td>
+<td><p>IO18</p></td>
+<td><p>Control for I/O pin 18</p></td>
+</tr>
+<tr class="row-even"><td><p>[19]</p></td>
+<td><p>IO19</p></td>
+<td><p>Control for I/O pin 19</p></td>
+</tr>
+<tr class="row-odd"><td><p>[20]</p></td>
+<td><p>IO20</p></td>
+<td><p>Control for I/O pin 20</p></td>
+</tr>
+<tr class="row-even"><td><p>[21]</p></td>
+<td><p>IO21</p></td>
+<td><p>Control for I/O pin 21</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-in">
+<h3>GPIO_IN<a class="headerlink" href="#gpio-in" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x4 = 0x82005804</cite></p>
+<blockquote>
+<div><p>GPIO Input(s) Status. Input value of IO pad as read by the FPGA</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "io0",  "bits": 1},
+        {"name": "io1",  "bits": 1},
+        {"bits": 3},
+        {"name": "io5",  "bits": 1},
+        {"name": "io6",  "bits": 1},
+        {"bits": 2},
+        {"name": "io9",  "bits": 1},
+        {"name": "io10",  "bits": 1},
+        {"name": "io11",  "bits": 1},
+        {"name": "io12",  "bits": 1},
+        {"name": "io13",  "bits": 1},
+        {"bits": 4},
+        {"name": "io18",  "bits": 1},
+        {"name": "io19",  "bits": 1},
+        {"name": "io20",  "bits": 1},
+        {"name": "io21",  "bits": 1},
+        {"bits": 10}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 16%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>IO0</p></td>
+<td><p>Control for I/O pin 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>[1]</p></td>
+<td><p>IO1</p></td>
+<td><p>Control for I/O pin 1</p></td>
+</tr>
+<tr class="row-even"><td><p>[5]</p></td>
+<td><p>IO5</p></td>
+<td><p>Control for I/O pin 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>[6]</p></td>
+<td><p>IO6</p></td>
+<td><p>Control for I/O pin 6</p></td>
+</tr>
+<tr class="row-even"><td><p>[9]</p></td>
+<td><p>IO9</p></td>
+<td><p>Control for I/O pin 9</p></td>
+</tr>
+<tr class="row-odd"><td><p>[10]</p></td>
+<td><p>IO10</p></td>
+<td><p>Control for I/O pin 10</p></td>
+</tr>
+<tr class="row-even"><td><p>[11]</p></td>
+<td><p>IO11</p></td>
+<td><p>Control for I/O pin 11</p></td>
+</tr>
+<tr class="row-odd"><td><p>[12]</p></td>
+<td><p>IO12</p></td>
+<td><p>Control for I/O pin 12</p></td>
+</tr>
+<tr class="row-even"><td><p>[13]</p></td>
+<td><p>IO13</p></td>
+<td><p>Control for I/O pin 13</p></td>
+</tr>
+<tr class="row-odd"><td><p>[18]</p></td>
+<td><p>IO18</p></td>
+<td><p>Control for I/O pin 18</p></td>
+</tr>
+<tr class="row-even"><td><p>[19]</p></td>
+<td><p>IO19</p></td>
+<td><p>Control for I/O pin 19</p></td>
+</tr>
+<tr class="row-odd"><td><p>[20]</p></td>
+<td><p>IO20</p></td>
+<td><p>Control for I/O pin 20</p></td>
+</tr>
+<tr class="row-even"><td><p>[21]</p></td>
+<td><p>IO21</p></td>
+<td><p>Control for I/O pin 21</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-out">
+<h3>GPIO_OUT<a class="headerlink" href="#gpio-out" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x8 = 0x82005808</cite></p>
+<blockquote>
+<div><p>GPIO Ouptut(s) Control. Value loaded into the output driver</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "io0",  "bits": 1},
+        {"name": "io1",  "bits": 1},
+        {"bits": 3},
+        {"name": "io5",  "bits": 1},
+        {"name": "io6",  "bits": 1},
+        {"bits": 2},
+        {"name": "io9",  "bits": 1},
+        {"name": "io10",  "bits": 1},
+        {"name": "io11",  "bits": 1},
+        {"name": "io12",  "bits": 1},
+        {"name": "io13",  "bits": 1},
+        {"bits": 4},
+        {"name": "io18",  "bits": 1},
+        {"name": "io19",  "bits": 1},
+        {"name": "io20",  "bits": 1},
+        {"name": "io21",  "bits": 1},
+        {"bits": 10}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 16%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>IO0</p></td>
+<td><p>Control for I/O pin 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>[1]</p></td>
+<td><p>IO1</p></td>
+<td><p>Control for I/O pin 1</p></td>
+</tr>
+<tr class="row-even"><td><p>[5]</p></td>
+<td><p>IO5</p></td>
+<td><p>Control for I/O pin 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>[6]</p></td>
+<td><p>IO6</p></td>
+<td><p>Control for I/O pin 6</p></td>
+</tr>
+<tr class="row-even"><td><p>[9]</p></td>
+<td><p>IO9</p></td>
+<td><p>Control for I/O pin 9</p></td>
+</tr>
+<tr class="row-odd"><td><p>[10]</p></td>
+<td><p>IO10</p></td>
+<td><p>Control for I/O pin 10</p></td>
+</tr>
+<tr class="row-even"><td><p>[11]</p></td>
+<td><p>IO11</p></td>
+<td><p>Control for I/O pin 11</p></td>
+</tr>
+<tr class="row-odd"><td><p>[12]</p></td>
+<td><p>IO12</p></td>
+<td><p>Control for I/O pin 12</p></td>
+</tr>
+<tr class="row-even"><td><p>[13]</p></td>
+<td><p>IO13</p></td>
+<td><p>Control for I/O pin 13</p></td>
+</tr>
+<tr class="row-odd"><td><p>[18]</p></td>
+<td><p>IO18</p></td>
+<td><p>Control for I/O pin 18</p></td>
+</tr>
+<tr class="row-even"><td><p>[19]</p></td>
+<td><p>IO19</p></td>
+<td><p>Control for I/O pin 19</p></td>
+</tr>
+<tr class="row-odd"><td><p>[20]</p></td>
+<td><p>IO20</p></td>
+<td><p>Control for I/O pin 20</p></td>
+</tr>
+<tr class="row-even"><td><p>[21]</p></td>
+<td><p>IO21</p></td>
+<td><p>Control for I/O pin 21</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt0">
+<h3>GPIO_ALT0<a class="headerlink" href="#gpio-alt0" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0xc = 0x8200580c</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt1">
+<h3>GPIO_ALT1<a class="headerlink" href="#gpio-alt1" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x10 = 0x82005810</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt5">
+<h3>GPIO_ALT5<a class="headerlink" href="#gpio-alt5" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x14 = 0x82005814</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt6">
+<h3>GPIO_ALT6<a class="headerlink" href="#gpio-alt6" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x18 = 0x82005818</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt9">
+<h3>GPIO_ALT9<a class="headerlink" href="#gpio-alt9" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x1c = 0x8200581c</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt10">
+<h3>GPIO_ALT10<a class="headerlink" href="#gpio-alt10" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x20 = 0x82005820</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt11">
+<h3>GPIO_ALT11<a class="headerlink" href="#gpio-alt11" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x24 = 0x82005824</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt12">
+<h3>GPIO_ALT12<a class="headerlink" href="#gpio-alt12" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x28 = 0x82005828</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt13">
+<h3>GPIO_ALT13<a class="headerlink" href="#gpio-alt13" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x2c = 0x8200582c</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt18">
+<h3>GPIO_ALT18<a class="headerlink" href="#gpio-alt18" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x30 = 0x82005830</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt19">
+<h3>GPIO_ALT19<a class="headerlink" href="#gpio-alt19" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x34 = 0x82005834</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt20">
+<h3>GPIO_ALT20<a class="headerlink" href="#gpio-alt20" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x38 = 0x82005838</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="gpio-alt21">
+<h3>GPIO_ALT21<a class="headerlink" href="#gpio-alt21" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82005800 + 0x3c = 0x8200583c</cite></p>
+<blockquote>
+<div><p>GPIO Alt Control. IO pin alternative functions</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "ctrl",  "bits": 8},
+        {"bits": 24}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[7:0]</p></td>
+<td><p>CTRL</p></td>
+<td><p>Select alternative function on IO pin</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 35%" />
+<col style="width: 65%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>csr_control</p></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+    <script type="text/javascript">
+        function init() {
+            WaveDrom.ProcessAll();
+        }
+        window.onload = init;
+    </script>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OrangeCrab Test SoC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrupts.html">Interrupt Controller</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer0.html">TIMER0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart.html">UART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddrphy.html">DDRPHY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdram.html">SDRAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rgb.html">RGB</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GPIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lxspi.html">LXSPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">BUTTON</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="rgb.html" title="previous chapter">RGB</a></li>
+      <li>Next: <a href="lxspi.html" title="next chapter">LXSPI</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Greg Davill.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/gpio.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

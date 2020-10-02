@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UART &#8212; OrangeCrab Test SoC  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/default.js"></script>
+    <script src="_static/WaveDrom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DDRPHY" href="ddrphy.html" />
+    <link rel="prev" title="TIMER0" href="timer0.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="uart">
+<h1>UART<a class="headerlink" href="#uart" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="register-listing-for-uart">
+<h2>Register Listing for UART<a class="headerlink" href="#register-listing-for-uart" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 53%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head"><p>Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#uart-rxtx"><span class="std std-ref">UART_RXTX</span></a></p></td>
+<td><p><a class="reference internal" href="#uart-rxtx"><span class="std std-ref">0x82003000</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uart-txfull"><span class="std std-ref">UART_TXFULL</span></a></p></td>
+<td><p><a class="reference internal" href="#uart-txfull"><span class="std std-ref">0x82003004</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uart-rxempty"><span class="std std-ref">UART_RXEMPTY</span></a></p></td>
+<td><p><a class="reference internal" href="#uart-rxempty"><span class="std std-ref">0x82003008</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uart-ev-status"><span class="std std-ref">UART_EV_STATUS</span></a></p></td>
+<td><p><a class="reference internal" href="#uart-ev-status"><span class="std std-ref">0x8200300c</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uart-ev-pending"><span class="std std-ref">UART_EV_PENDING</span></a></p></td>
+<td><p><a class="reference internal" href="#uart-ev-pending"><span class="std std-ref">0x82003010</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uart-ev-enable"><span class="std std-ref">UART_EV_ENABLE</span></a></p></td>
+<td><p><a class="reference internal" href="#uart-ev-enable"><span class="std std-ref">0x82003014</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#uart-txempty"><span class="std std-ref">UART_TXEMPTY</span></a></p></td>
+<td><p><a class="reference internal" href="#uart-txempty"><span class="std std-ref">0x82003018</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#uart-rxfull"><span class="std std-ref">UART_RXFULL</span></a></p></td>
+<td><p><a class="reference internal" href="#uart-rxfull"><span class="std std-ref">0x8200301c</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="uart-rxtx">
+<h3>UART_RXTX<a class="headerlink" href="#uart-rxtx" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003000 + 0x0 = 0x82003000</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "rxtx[7:0]", "bits": 8},
+        {"bits": 24},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="uart-txfull">
+<h3>UART_TXFULL<a class="headerlink" href="#uart-txfull" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003000 + 0x4 = 0x82003004</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "txfull", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="uart-rxempty">
+<h3>UART_RXEMPTY<a class="headerlink" href="#uart-rxempty" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003000 + 0x8 = 0x82003008</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "rxempty", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="uart-ev-status">
+<h3>UART_EV_STATUS<a class="headerlink" href="#uart-ev-status" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003000 + 0xc = 0x8200300c</cite></p>
+<blockquote>
+<div><p>This register contains the current raw level of the Event trigger.  Writes to this register have no effect.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "tx",  "bits": 1},
+        {"name": "rx",  "bits": 1},
+        {"bits": 30}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 16%" />
+<col style="width: 66%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>TX</p></td>
+<td><p>Level of the <cite>tx</cite> event</p></td>
+</tr>
+<tr class="row-odd"><td><p>[1]</p></td>
+<td><p>RX</p></td>
+<td><p>Level of the <cite>rx</cite> event</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="uart-ev-pending">
+<h3>UART_EV_PENDING<a class="headerlink" href="#uart-ev-pending" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003000 + 0x10 = 0x82003010</cite></p>
+<blockquote>
+<div><p>When an Event occurs, the corresponding bit will be set in this register.  To clear the Event, set the corresponding bit in this register.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "tx",  "bits": 1},
+        {"name": "rx",  "bits": 1},
+        {"bits": 30}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>TX</p></td>
+<td><p><cite>1</cite> if a <cite>tx</cite> event occurred. This Event is triggered on a <strong>falling</strong> edge.</p></td>
+</tr>
+<tr class="row-odd"><td><p>[1]</p></td>
+<td><p>RX</p></td>
+<td><p><cite>1</cite> if a <cite>rx</cite> event occurred. This Event is triggered on a <strong>falling</strong> edge.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="uart-ev-enable">
+<h3>UART_EV_ENABLE<a class="headerlink" href="#uart-ev-enable" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003000 + 0x14 = 0x82003014</cite></p>
+<blockquote>
+<div><p>This register enables the corresponding Events.  Write a <cite>0</cite> to this register to disable individual events.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "tx",  "bits": 1},
+        {"name": "rx",  "bits": 1},
+        {"bits": 30}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 12%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>TX</p></td>
+<td><p>Write a <cite>1</cite> to enable the <cite>tx</cite> Event</p></td>
+</tr>
+<tr class="row-odd"><td><p>[1]</p></td>
+<td><p>RX</p></td>
+<td><p>Write a <cite>1</cite> to enable the <cite>rx</cite> Event</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="uart-txempty">
+<h3>UART_TXEMPTY<a class="headerlink" href="#uart-txempty" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003000 + 0x18 = 0x82003018</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "txempty", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="uart-rxfull">
+<h3>UART_RXFULL<a class="headerlink" href="#uart-rxfull" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003000 + 0x1c = 0x8200301c</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "rxfull", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+    <script type="text/javascript">
+        function init() {
+            WaveDrom.ProcessAll();
+        }
+        window.onload = init;
+    </script>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OrangeCrab Test SoC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrupts.html">Interrupt Controller</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer0.html">TIMER0</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">UART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddrphy.html">DDRPHY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdram.html">SDRAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rgb.html">RGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpio.html">GPIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lxspi.html">LXSPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">BUTTON</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="timer0.html" title="previous chapter">TIMER0</a></li>
+      <li>Next: <a href="ddrphy.html" title="next chapter">DDRPHY</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Greg Davill.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/uart.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DDRPHY &#8212; OrangeCrab Test SoC  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/default.js"></script>
+    <script src="_static/WaveDrom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="SDRAM" href="sdram.html" />
+    <link rel="prev" title="UART" href="uart.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="ddrphy">
+<h1>DDRPHY<a class="headerlink" href="#ddrphy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="register-listing-for-ddrphy">
+<h2>Register Listing for DDRPHY<a class="headerlink" href="#register-listing-for-ddrphy" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 57%" />
+<col style="width: 43%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head"><p>Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#ddrphy-dly-sel"><span class="std std-ref">DDRPHY_DLY_SEL</span></a></p></td>
+<td><p><a class="reference internal" href="#ddrphy-dly-sel"><span class="std std-ref">0x82003800</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ddrphy-rdly-dq-rst"><span class="std std-ref">DDRPHY_RDLY_DQ_RST</span></a></p></td>
+<td><p><a class="reference internal" href="#ddrphy-rdly-dq-rst"><span class="std std-ref">0x82003804</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ddrphy-rdly-dq-inc"><span class="std std-ref">DDRPHY_RDLY_DQ_INC</span></a></p></td>
+<td><p><a class="reference internal" href="#ddrphy-rdly-dq-inc"><span class="std std-ref">0x82003808</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ddrphy-rdly-dq-bitslip-rst"><span class="std std-ref">DDRPHY_RDLY_DQ_BITSLIP_RST</span></a></p></td>
+<td><p><a class="reference internal" href="#ddrphy-rdly-dq-bitslip-rst"><span class="std std-ref">0x8200380c</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ddrphy-rdly-dq-bitslip"><span class="std std-ref">DDRPHY_RDLY_DQ_BITSLIP</span></a></p></td>
+<td><p><a class="reference internal" href="#ddrphy-rdly-dq-bitslip"><span class="std std-ref">0x82003810</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#ddrphy-burstdet-clr"><span class="std std-ref">DDRPHY_BURSTDET_CLR</span></a></p></td>
+<td><p><a class="reference internal" href="#ddrphy-burstdet-clr"><span class="std std-ref">0x82003814</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#ddrphy-burstdet-seen"><span class="std std-ref">DDRPHY_BURSTDET_SEEN</span></a></p></td>
+<td><p><a class="reference internal" href="#ddrphy-burstdet-seen"><span class="std std-ref">0x82003818</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="ddrphy-dly-sel">
+<h3>DDRPHY_DLY_SEL<a class="headerlink" href="#ddrphy-dly-sel" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003800 + 0x0 = 0x82003800</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "dly_sel[1:0]", "bits": 2},
+        {"bits": 30},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ddrphy-rdly-dq-rst">
+<h3>DDRPHY_RDLY_DQ_RST<a class="headerlink" href="#ddrphy-rdly-dq-rst" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003800 + 0x4 = 0x82003804</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "rdly_dq_rst", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ddrphy-rdly-dq-inc">
+<h3>DDRPHY_RDLY_DQ_INC<a class="headerlink" href="#ddrphy-rdly-dq-inc" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003800 + 0x8 = 0x82003808</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "rdly_dq_inc", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ddrphy-rdly-dq-bitslip-rst">
+<h3>DDRPHY_RDLY_DQ_BITSLIP_RST<a class="headerlink" href="#ddrphy-rdly-dq-bitslip-rst" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003800 + 0xc = 0x8200380c</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "rdly_dq_bitslip_rst", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ddrphy-rdly-dq-bitslip">
+<h3>DDRPHY_RDLY_DQ_BITSLIP<a class="headerlink" href="#ddrphy-rdly-dq-bitslip" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003800 + 0x10 = 0x82003810</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "rdly_dq_bitslip", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ddrphy-burstdet-clr">
+<h3>DDRPHY_BURSTDET_CLR<a class="headerlink" href="#ddrphy-burstdet-clr" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003800 + 0x14 = 0x82003814</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "burstdet_clr", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="ddrphy-burstdet-seen">
+<h3>DDRPHY_BURSTDET_SEEN<a class="headerlink" href="#ddrphy-burstdet-seen" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82003800 + 0x18 = 0x82003818</cite></p>
+<blockquote>
+<div>
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "burstdet_seen[1:0]", "bits": 2},
+        {"bits": 30},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+    <script type="text/javascript">
+        function init() {
+            WaveDrom.ProcessAll();
+        }
+        window.onload = init;
+    </script>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OrangeCrab Test SoC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrupts.html">Interrupt Controller</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="timer0.html">TIMER0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart.html">UART</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">DDRPHY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdram.html">SDRAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rgb.html">RGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpio.html">GPIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lxspi.html">LXSPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">BUTTON</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="uart.html" title="previous chapter">UART</a></li>
+      <li>Next: <a href="sdram.html" title="next chapter">SDRAM</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Greg Davill.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/ddrphy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

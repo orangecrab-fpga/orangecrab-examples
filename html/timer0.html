@@ -1,0 +1,399 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIMER0 &#8212; OrangeCrab Test SoC  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script src="_static/default.js"></script>
+    <script src="_static/WaveDrom.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="UART" href="uart.html" />
+    <link rel="prev" title="CTRL" href="ctrl.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="timer0">
+<h1>TIMER0<a class="headerlink" href="#timer0" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="timer">
+<h2>Timer<a class="headerlink" href="#timer" title="Permalink to this headline">¶</a></h2>
+<p>Provides a generic Timer core.</p>
+<p>The Timer is implemented as a countdown timer that can be used in various modes:</p>
+<ul class="simple">
+<li><p>Polling : Returns current countdown value to software</p></li>
+<li><p>One-Shot: Loads itself and stops when value reaches <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p>Periodic: (Re-)Loads itself when value reaches <code class="docutils literal notranslate"><span class="pre">0</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">en</span></code> register allows the user to enable/disable the Timer. When the Timer is enabled, it is
+automatically loaded with the value of <cite>load</cite> register.</p>
+<p>When the Timer reaches <code class="docutils literal notranslate"><span class="pre">0</span></code>, it is automatically reloaded with value of <cite>reload</cite> register.</p>
+<p>The user can latch the current countdown value by writing to <code class="docutils literal notranslate"><span class="pre">update_value</span></code> register, it will
+update <code class="docutils literal notranslate"><span class="pre">value</span></code> register with current countdown value.</p>
+<p>To use the Timer in One-Shot mode, the user needs to:</p>
+<ul class="simple">
+<li><p>Disable the timer</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">load</span></code> register to the expected duration</p></li>
+<li><p>(Re-)Enable the Timer</p></li>
+</ul>
+<p>To use the Timer in Periodic mode, the user needs to:</p>
+<ul class="simple">
+<li><p>Disable the Timer</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">load</span></code> register to 0</p></li>
+<li><p>Set the <code class="docutils literal notranslate"><span class="pre">reload</span></code> register to the expected period</p></li>
+<li><p>Enable the Timer</p></li>
+</ul>
+<p>For both modes, the CPU can be advertised by an IRQ that the duration/period has elapsed. (The
+CPU can also do software polling with <code class="docutils literal notranslate"><span class="pre">update_value</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> to know the elapsed duration)</p>
+</div>
+<div class="section" id="register-listing-for-timer0">
+<h2>Register Listing for TIMER0<a class="headerlink" href="#register-listing-for-timer0" title="Permalink to this headline">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 55%" />
+<col style="width: 45%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Register</p></th>
+<th class="head"><p>Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#timer0-load"><span class="std std-ref">TIMER0_LOAD</span></a></p></td>
+<td><p><a class="reference internal" href="#timer0-load"><span class="std std-ref">0x82002800</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#timer0-reload"><span class="std std-ref">TIMER0_RELOAD</span></a></p></td>
+<td><p><a class="reference internal" href="#timer0-reload"><span class="std std-ref">0x82002804</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#timer0-en"><span class="std std-ref">TIMER0_EN</span></a></p></td>
+<td><p><a class="reference internal" href="#timer0-en"><span class="std std-ref">0x82002808</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#timer0-update-value"><span class="std std-ref">TIMER0_UPDATE_VALUE</span></a></p></td>
+<td><p><a class="reference internal" href="#timer0-update-value"><span class="std std-ref">0x8200280c</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#timer0-value"><span class="std std-ref">TIMER0_VALUE</span></a></p></td>
+<td><p><a class="reference internal" href="#timer0-value"><span class="std std-ref">0x82002810</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#timer0-ev-status"><span class="std std-ref">TIMER0_EV_STATUS</span></a></p></td>
+<td><p><a class="reference internal" href="#timer0-ev-status"><span class="std std-ref">0x82002814</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#timer0-ev-pending"><span class="std std-ref">TIMER0_EV_PENDING</span></a></p></td>
+<td><p><a class="reference internal" href="#timer0-ev-pending"><span class="std std-ref">0x82002818</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#timer0-ev-enable"><span class="std std-ref">TIMER0_EV_ENABLE</span></a></p></td>
+<td><p><a class="reference internal" href="#timer0-ev-enable"><span class="std std-ref">0x8200281c</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="timer0-load">
+<h3>TIMER0_LOAD<a class="headerlink" href="#timer0-load" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82002800 + 0x0 = 0x82002800</cite></p>
+<blockquote>
+<div><p>Load value when Timer is (re-)enabled. In One-Shot mode, the value written to
+this register specifies the Timer’s duration in clock cycles.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "load[31:0]", "bits": 32}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="timer0-reload">
+<h3>TIMER0_RELOAD<a class="headerlink" href="#timer0-reload" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82002800 + 0x4 = 0x82002804</cite></p>
+<blockquote>
+<div><p>Reload value when Timer reaches <code class="docutils literal notranslate"><span class="pre">0</span></code>. In Periodic mode, the value written to
+this register specify the Timer’s period in clock cycles.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "reload[31:0]", "bits": 32}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="timer0-en">
+<h3>TIMER0_EN<a class="headerlink" href="#timer0-en" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82002800 + 0x8 = 0x82002808</cite></p>
+<blockquote>
+<div><p>Enable flag of the Timer. Set this flag to <code class="docutils literal notranslate"><span class="pre">1</span></code> to enable/start the Timer.  Set
+to <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable the Timer.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "en", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="timer0-update-value">
+<h3>TIMER0_UPDATE_VALUE<a class="headerlink" href="#timer0-update-value" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82002800 + 0xc = 0x8200280c</cite></p>
+<blockquote>
+<div><p>Update trigger for the current countdown value. A write to this register latches
+the current countdown value to <code class="docutils literal notranslate"><span class="pre">value</span></code> register.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "update_value", "bits": 1},
+        {"bits": 31},
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="timer0-value">
+<h3>TIMER0_VALUE<a class="headerlink" href="#timer0-value" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82002800 + 0x10 = 0x82002810</cite></p>
+<blockquote>
+<div><p>Latched countdown value. This value is updated by writing to <code class="docutils literal notranslate"><span class="pre">update_value</span></code>.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "value[31:0]", "bits": 32}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 1 }, "options": {"hspace": 400, "bits": 32, "lanes": 1}
+}
+</script>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="timer0-ev-status">
+<h3>TIMER0_EV_STATUS<a class="headerlink" href="#timer0-ev-status" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82002800 + 0x14 = 0x82002814</cite></p>
+<blockquote>
+<div><p>This register contains the current raw level of the Event trigger.  Writes to this register have no effect.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "zero",  "bits": 1},
+        {"bits": 31}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 15%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>ZERO</p></td>
+<td><p>Level of the <cite>zero</cite> event</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="timer0-ev-pending">
+<h3>TIMER0_EV_PENDING<a class="headerlink" href="#timer0-ev-pending" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82002800 + 0x18 = 0x82002818</cite></p>
+<blockquote>
+<div><p>When an Event occurs, the corresponding bit will be set in this register.  To clear the Event, set the corresponding bit in this register.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "zero",  "bits": 1},
+        {"bits": 31}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>ZERO</p></td>
+<td><p><cite>1</cite> if a <cite>zero</cite> event occurred. This Event is triggered on a <strong>falling</strong> edge.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="timer0-ev-enable">
+<h3>TIMER0_EV_ENABLE<a class="headerlink" href="#timer0-ev-enable" title="Permalink to this headline">¶</a></h3>
+<p><cite>Address: 0x82002800 + 0x1c = 0x8200281c</cite></p>
+<blockquote>
+<div><p>This register enables the corresponding Events.  Write a <cite>0</cite> to this register to disable individual events.</p>
+
+<div style="overflow-x:auto">
+<script type="WaveDrom">
+{
+    "reg": [
+        {"name": "zero",  "bits": 1},
+        {"bits": 31}
+    ], "config": {"hspace": 400, "bits": 32, "lanes": 4 }, "options": {"hspace": 400, "bits": 32, "lanes": 4}
+}
+</script>
+</div>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 11%" />
+<col style="width: 75%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>[0]</p></td>
+<td><p>ZERO</p></td>
+<td><p>Write a <cite>1</cite> to enable the <cite>zero</cite> Event</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+    <script type="text/javascript">
+        function init() {
+            WaveDrom.ProcessAll();
+        }
+        window.onload = init;
+    </script>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">OrangeCrab Test SoC</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="interrupts.html">Interrupt Controller</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ctrl.html">CTRL</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">TIMER0</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uart.html">UART</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ddrphy.html">DDRPHY</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sdram.html">SDRAM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rgb.html">RGB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpio.html">GPIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lxspi.html">LXSPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">BUTTON</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ctrl.html" title="previous chapter">CTRL</a></li>
+      <li>Next: <a href="uart.html" title="next chapter">UART</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Greg Davill.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/timer0.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
