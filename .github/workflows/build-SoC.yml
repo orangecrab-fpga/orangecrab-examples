@@ -29,12 +29,17 @@ jobs:
         rm -rf riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz
         echo "$(pwd)/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin" >> $GITHUB_PATH
 
-    - name: Litex Build
+    - name: configure python
       working-directory: ./litex
       run: |
         python3 -m pip install Pillow 
+        python3 -m pip install wheel
         python3 -m pip install Sphinx 
         python3 -m pip install sphinxcontrib-wavedrom 
+
+    - name: Litex build
+      working-directory: ./litex
+      run: |
         python3 SoC-CircuitPython.py
         sphinx-build -M html build/documentation/ build/documentation/_build
 
