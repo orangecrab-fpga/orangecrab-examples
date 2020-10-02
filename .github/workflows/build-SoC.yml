@@ -41,7 +41,7 @@ jobs:
       working-directory: ./litex
       run: |
         python3 SoC-CircuitPython.py
-        sphinx-build -M html build/documentation/ build/documentation/_build
+        python3 -m sphinx -M html build/documentation/ build/documentation/_build
 
     - name: Upload bitstream
       uses: actions/upload-artifact@v2
