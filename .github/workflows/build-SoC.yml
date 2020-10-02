@@ -53,11 +53,11 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: OrangeCrab SoC Docs
-        path: ${{ github.workspace }}/litex/build/documentation/_build
+        path: ${{ github.workspace }}/litex/build/documentation/_build/html
 
 
     - name: Deploy Docs
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ${{ github.workspace }}/litex/build/documentation/_build
+        publish_dir: ${{ github.workspace }}/litex/build/documentation/_build/html
