@@ -33,7 +33,10 @@ jobs:
       working-directory: ./litex
       run: |
         python3 -m pip install Pillow 
+        python3 -m pip install Sphinx 
+        python3 -m pip install sphinxcontrib-wavedrom 
         python3 SoC-CircuitPython.py
+        sphinx-build -M html build/documentation/ build/documentation/_build
 
     - name: Upload bitstream
       uses: actions/upload-artifact@v2
@@ -41,4 +44,15 @@ jobs:
         name: OrangeCrab SoC Bitstream
         path: ${{ github.workspace }}/litex/build/orangecrab/gateware/orangecrab.dfu
 
-      
+    - name: Upload docs
+        uses: actions/upload-artifact@v2
+        with:
+          name: OrangeCrab SoC Docs
+          path: ${{ github.workspace }}/litex/build/documentation/_build
+
+
+    - name: Deploy Docs
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ${{ github.workspace }}/litex/build/documentation/_build
