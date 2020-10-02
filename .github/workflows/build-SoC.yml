@@ -45,10 +45,10 @@ jobs:
         path: ${{ github.workspace }}/litex/build/orangecrab/gateware/orangecrab.dfu
 
     - name: Upload docs
-        uses: actions/upload-artifact@v2
-        with:
-          name: OrangeCrab SoC Docs
-          path: ${{ github.workspace }}/litex/build/documentation/_build
+      uses: actions/upload-artifact@v2
+      with:
+        name: OrangeCrab SoC Docs
+        path: ${{ github.workspace }}/litex/build/documentation/_build
 
 
     - name: Deploy Docs
