@@ -42,6 +42,6 @@ dfu: ${PROJ}.dfu
 	dfu-suffix -v 1209 -p 5af0 -a $@
 
 clean:
-	$(RM) -f ${PROJ}.bit ${PROJ}_out.config ${PROJ}.json ${PROJ}.dfu 
+	$(RM) -f ${PROJ}.bit ${PROJ}_out.config ${PROJ}.json ${PROJ}.dfu
 
 .PHONY: prog clean
