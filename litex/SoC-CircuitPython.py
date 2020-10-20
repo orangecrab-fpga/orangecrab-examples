@@ -189,11 +189,14 @@ class BaseSoC(SoCCore):
         platform.add_extension(extras)
 
         # Disconnect Serial Debug (Stub required so BIOS is kept happy)
-        kwargs['uart_name']="stub"
+        kwargs['uart_name']="stream"
 
         # SoCCore ----------------------------------------------------------------------------------
         SoCCore.__init__(self, platform, clk_freq=sys_clk_freq, csr_data_width=32, **kwargs)
 
+        # connect UART stream to NULL
+        self.comb += self.uart.source.ready.eq(1)
+        
         # CRG --------------------------------------------------------------------------------------
         self.submodules.crg = crg = CRG(platform, sys_clk_freq, with_usb_pll=True)
 
