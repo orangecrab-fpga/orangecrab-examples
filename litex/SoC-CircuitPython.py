@@ -104,16 +104,17 @@ class CRG(Module):
 
         # Power on reset 10ms.
         por_count = Signal(24, reset=int(48e6 * 50e-3))
-        self.comb += self.cd_por.clk.eq(clk48)
+        self.comb += self.cd_por.clk.eq(osc_g)
         self.comb += por_done.eq(por_count == 0)
         self.sync.por += If(~por_done, por_count.eq(por_count - 1))
+        self.comb += self.cd_init.clk.eq(osc_g)
 
         # PLL
         sys2x_clk_ecsout = Signal()
         self.submodules.pll = pll = ECP5PLL()
+        self.comb += pll.reset.eq(~por_done)
         pll.register_clkin(clk48, 48e6)
         pll.create_clkout(self.cd_sys2x_i, 2*sys_clk_freq)
-        pll.create_clkout(self.cd_init, 24e6)
         self.specials += [
             Instance("ECLKBRIDGECS",
                 i_CLK0   = self.cd_sys2x_i.clk,
@@ -129,9 +130,9 @@ class CRG(Module):
                 i_CLKI    = self.cd_sys2x.clk,
                 i_RST     = self.reset,
                 o_CDIVX   = self.cd_sys.clk),
-            AsyncResetSynchronizer(self.cd_sys,   ~por_done | ~pll.locked | self.reset),
-            AsyncResetSynchronizer(self.cd_sys2x, ~por_done | ~pll.locked | self.reset),
-            AsyncResetSynchronizer(self.cd_sys2x_i, ~por_done | ~pll.locked | self.reset),
+            #AsyncResetSynchronizer(self.cd_sys,   ~pll.locked ),
+            #AsyncResetSynchronizer(self.cd_sys2x, ~pll.locked ),
+            AsyncResetSynchronizer(self.cd_sys2x_i, ~pll.locked ),
         ]
 
         # USB PLL
@@ -139,6 +140,7 @@ class CRG(Module):
             self.clock_domains.cd_usb_12 = ClockDomain()
             self.clock_domains.cd_usb_48 = ClockDomain()
             usb_pll = ECP5PLL()
+            self.comb += usb_pll.reset.eq(~por_done)
             self.submodules += usb_pll
             usb_pll.register_clkin(clk48, 48e6)
             usb_pll.create_clkout(self.cd_usb_48, 48e6)
