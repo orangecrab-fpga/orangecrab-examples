@@ -12,7 +12,7 @@ module top (
     output rgb_led0_g,
     output rgb_led0_b,
 
-    output rsn_n,
+    output rst_n,
     input usr_btn
 );
     // Create a 27 bit register
@@ -34,7 +34,7 @@ module top (
     always @(posedge clk48) begin
         reset_sr <= {usr_btn};
     end
-    assign rsn_n = reset_sr;
+    assign rst_n = reset_sr;
 
 
 endmodule
