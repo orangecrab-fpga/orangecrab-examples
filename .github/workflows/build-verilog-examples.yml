@@ -1,0 +1,32 @@
+name: build-verilog-examples
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-verilog-examples:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        fetch-depth: 2
+
+    - name: configure fpga-toolchain
+      run: |
+        export VERSION=nightly-20200930
+        wget https://github.com/open-tool-forge/fpga-toolchain/releases/download/$VERSION/fpga-toolchain-linux_x86_64-$VERSION.tar.xz
+        tar -xf fpga-toolchain-linux_x86_64-$VERSION.tar.xz
+        rm -rf fpga-toolchain-linux_x86_64-$VERSION.tar.xz
+        echo "$(pwd)/fpga-toolchain/bin" >> $GITHUB_PATH
+
+    - name: verilog.blink
+      working-directory: ./verilog/blink
+      run: make all
+
+    - name: verilog.blink_reset
+      working-directory: ./verilog/blink_reset
+      run: make all
+        
