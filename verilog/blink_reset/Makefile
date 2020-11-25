@@ -32,7 +32,7 @@ dfu: ${PROJ}.dfu
 	yosys -p "synth_ecp5 -json $@" $<
 
 %_out.config: %.json
-	nextpnr-ecp5 --json $< --textcfg $@ --25k --package CSFBGA285 --lpf orangecrab_${VERSION}.pcf
+	nextpnr-ecp5 --json $< --textcfg $@ --25k --package CSFBGA285 --lpf ..$(PATH_SEP)orangecrab_${VERSION}.pcf
 
 %.bit: %_out.config
 	ecppack --compress --freq 38.8 --input $< --bit $@
