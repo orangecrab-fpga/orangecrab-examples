@@ -3,6 +3,7 @@
 
 /*
  *  Blink a LED on the OrangeCrab using verilog
+ *  Is able to reset the OrangeCrab by driving rst_n low on btn0 press.
  */
 
 module top (
