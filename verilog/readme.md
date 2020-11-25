@@ -18,3 +18,4 @@ Currently each example builds on the concepts of the previous one. If you view t
  - `blink` — The first thing you do with any new board! Make the LED blink, with gateware!
  - `blink_reset` — As above, but with a bonus! When the [[btn0]] is pressed, OrangeCrab will reset into the bootloader mode.
  - `blink_reset_module` — As `blink_reset`, but the reset functionality is moved into a different module, illustrating how modules can instantiate other modules.
+ - `pwm_rainbow` — A more complex, glowy (rather than blinky) example that uses three PWM modules to softly fade the LED colors.
