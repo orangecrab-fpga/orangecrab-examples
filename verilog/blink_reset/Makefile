@@ -1,4 +1,4 @@
-PROJ=blink
+PROJ=blink_reset
 
 # `r0.1` or `r0.2`
 VERSION:=r0.2
