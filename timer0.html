@@ -4,15 +4,15 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>TIMER0 &#8212; OrangeCrab Test SoC  documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <script src="_static/default.js"></script>
     <script src="_static/WaveDrom.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -35,9 +35,9 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="timer0">
+  <section id="timer0">
 <h1>TIMER0<a class="headerlink" href="#timer0" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="timer">
+<section id="timer">
 <h2>Timer<a class="headerlink" href="#timer" title="Permalink to this headline">¶</a></h2>
 <p>Provides a generic Timer core.</p>
 <p>The Timer is implemented as a countdown timer that can be used in various modes:</p>
@@ -66,8 +66,8 @@ update <code class="docutils literal notranslate"><span class="pre">value</span>
 </ul>
 <p>For both modes, the CPU can be advertised by an IRQ that the duration/period has elapsed. (The
 CPU can also do software polling with <code class="docutils literal notranslate"><span class="pre">update_value</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> to know the elapsed duration)</p>
-</div>
-<div class="section" id="register-listing-for-timer0">
+</section>
+<section id="register-listing-for-timer0">
 <h2>Register Listing for TIMER0<a class="headerlink" href="#register-listing-for-timer0" title="Permalink to this headline">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
@@ -106,7 +106,7 @@ CPU can also do software polling with <code class="docutils literal notranslate"
 </tr>
 </tbody>
 </table>
-<div class="section" id="timer0-load">
+<section id="timer0-load">
 <h3>TIMER0_LOAD<a class="headerlink" href="#timer0-load" title="Permalink to this headline">¶</a></h3>
 <p><cite>Address: 0x82002800 + 0x0 = 0x82002800</cite></p>
 <blockquote>
@@ -123,8 +123,8 @@ this register specifies the Timer’s duration in clock cycles.</p>
 </script>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="timer0-reload">
+</section>
+<section id="timer0-reload">
 <h3>TIMER0_RELOAD<a class="headerlink" href="#timer0-reload" title="Permalink to this headline">¶</a></h3>
 <p><cite>Address: 0x82002800 + 0x4 = 0x82002804</cite></p>
 <blockquote>
@@ -141,8 +141,8 @@ this register specify the Timer’s period in clock cycles.</p>
 </script>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="timer0-en">
+</section>
+<section id="timer0-en">
 <h3>TIMER0_EN<a class="headerlink" href="#timer0-en" title="Permalink to this headline">¶</a></h3>
 <p><cite>Address: 0x82002800 + 0x8 = 0x82002808</cite></p>
 <blockquote>
@@ -160,8 +160,8 @@ to <code class="docutils literal notranslate"><span class="pre">0</span></code> 
 </script>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="timer0-update-value">
+</section>
+<section id="timer0-update-value">
 <h3>TIMER0_UPDATE_VALUE<a class="headerlink" href="#timer0-update-value" title="Permalink to this headline">¶</a></h3>
 <p><cite>Address: 0x82002800 + 0xc = 0x8200280c</cite></p>
 <blockquote>
@@ -179,8 +179,8 @@ the current countdown value to <code class="docutils literal notranslate"><span 
 </script>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="timer0-value">
+</section>
+<section id="timer0-value">
 <h3>TIMER0_VALUE<a class="headerlink" href="#timer0-value" title="Permalink to this headline">¶</a></h3>
 <p><cite>Address: 0x82002800 + 0x10 = 0x82002810</cite></p>
 <blockquote>
@@ -196,8 +196,8 @@ the current countdown value to <code class="docutils literal notranslate"><span 
 </script>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="timer0-ev-status">
+</section>
+<section id="timer0-ev-status">
 <h3>TIMER0_EV_STATUS<a class="headerlink" href="#timer0-ev-status" title="Permalink to this headline">¶</a></h3>
 <p><cite>Address: 0x82002800 + 0x14 = 0x82002814</cite></p>
 <blockquote>
@@ -233,8 +233,8 @@ the current countdown value to <code class="docutils literal notranslate"><span 
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="timer0-ev-pending">
+</section>
+<section id="timer0-ev-pending">
 <h3>TIMER0_EV_PENDING<a class="headerlink" href="#timer0-ev-pending" title="Permalink to this headline">¶</a></h3>
 <p><cite>Address: 0x82002800 + 0x18 = 0x82002818</cite></p>
 <blockquote>
@@ -270,8 +270,8 @@ the current countdown value to <code class="docutils literal notranslate"><span 
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section" id="timer0-ev-enable">
+</section>
+<section id="timer0-ev-enable">
 <h3>TIMER0_EV_ENABLE<a class="headerlink" href="#timer0-ev-enable" title="Permalink to this headline">¶</a></h3>
 <p><cite>Address: 0x82002800 + 0x1c = 0x8200281c</cite></p>
 <blockquote>
@@ -307,9 +307,9 @@ the current countdown value to <code class="docutils literal notranslate"><span 
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/javascript">
         function init() {
@@ -381,10 +381,10 @@ the current countdown value to <code class="docutils literal notranslate"><span 
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2020, Greg Davill.
+      &copy;2021, Greg Davill.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
