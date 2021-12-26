@@ -29,7 +29,7 @@ dfu: ${PROJ}.dfu
 
 
 %.json: %.v
-	yosys -p "synth_ecp5 -json $@" $<
+	yosys -p "read_verilog $<; synth_ecp5 -json $@"
 
 %_out.config: %.json
 	nextpnr-ecp5 --json $< --textcfg $@ --25k --package CSFBGA285 --lpf ..$(PATH_SEP)orangecrab_${VERSION}.pcf
