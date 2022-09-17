@@ -34,3 +34,31 @@ jobs:
       working-directory: ./verilog/pwm_rainbow
       run: make all
         
+
+  build-verilog-examples(win):
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+        fetch-depth: 2
+
+    - name: configure fpga-toolchain
+      run: |
+        export VERSION=2022-09-17
+        wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/$VERSION/oss-cad-suite-windows-x64-$(echo $VERSION | sed 's/-//g').exe
+        oss-cad-suite-windows-x64-$(echo $VERSION | sed 's/-//g').exe
+        oss-cad-suite\environment.bat
+
+    - name: verilog.blink
+      working-directory: ./verilog/blink
+      run: make all
+
+    - name: verilog.blink_reset
+      working-directory: ./verilog/blink_reset
+      run: make all
+
+    - name: verilog.pwm_rainbow
+      working-directory: ./verilog/pwm_rainbow
+      run: make all
+        
