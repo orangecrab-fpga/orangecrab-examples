@@ -48,10 +48,12 @@ jobs:
         Add-Content $env:GITHUB_PATH "${GITHUB_WORKSPACE}/oss-cad-suite/bin"
         Add-Content $env:GITHUB_PATH "${GITHUB_WORKSPACE}/oss-cad-suite/lib"
         
+        
     - name: verilog.blink
       shell: bash
       working-directory: ./verilog/blink
       run: |
+        echo $PATH
         yosys --version
         make all
 
