@@ -47,8 +47,7 @@ jobs:
         .\oss-cad-suite-windows-x64-20220917.exe
         Add-Content $env:GITHUB_PATH "${GITHUB_WORKSPACE}/oss-cad-suite/bin"
         Add-Content $env:GITHUB_PATH "${GITHUB_WORKSPACE}/oss-cad-suite/lib"
-        yosys.exe --version
-
+        
     - name: verilog.blink
       shell: bash
       working-directory: ./verilog/blink
