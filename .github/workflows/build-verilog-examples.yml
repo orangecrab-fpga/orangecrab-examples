@@ -41,9 +41,9 @@ jobs:
       with:
         submodules: false
     - uses: msys2/setup-msys2@v2
-        with:
-          msystem: MINGW64
-          update: true
+      with:
+        msystem: MINGW64
+        update: true
 
     - name: configure fpga-toolchain
       run: |
@@ -51,7 +51,7 @@ jobs:
         .\oss-cad-suite-windows-x64-20220917.exe
         echo "${HOME}/oss-cad-suite/bin;${HOME}/oss-cad-suite/lib;${HOME}/oss-cad-suite/py3bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
         yosys --version
-        
+
     - name: verilog.blink
       working-directory: ./verilog/blink
       run: |
