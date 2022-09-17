@@ -11,8 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        submodules: true
-        fetch-depth: 2
+        submodules: false
 
     - name: configure fpga-toolchain
       run: |
@@ -40,14 +39,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        submodules: true
-        fetch-depth: 2
+        submodules: false
 
     - name: configure fpga-toolchain
       run: |
-        export VERSION=2022-09-17
-        wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/$VERSION/oss-cad-suite-windows-x64-$(echo $VERSION | sed 's/-//g').exe
-        oss-cad-suite-windows-x64-$(echo $VERSION | sed 's/-//g').exe
+        wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2022-09-17/oss-cad-suite-windows-x64-20220917.exe
+        oss-cad-suite-windows-x64-20220917.exe
         oss-cad-suite\environment.bat
 
     - name: verilog.blink
