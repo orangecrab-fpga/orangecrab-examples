@@ -35,7 +35,7 @@ jobs:
       run: make all
         
 
-  build-verilog-examples(win):
+  build-verilog-examples-win64:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
