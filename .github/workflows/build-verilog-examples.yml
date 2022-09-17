@@ -50,20 +50,14 @@ jobs:
         
         
     - name: verilog.blink
-      shell: bash
       working-directory: ./verilog/blink
-      run: |
-        echo $PATH
-        yosys --version
-        make all
+      run: make all
 
     - name: verilog.blink_reset
-      shell: bash
       working-directory: ./verilog/blink_reset
       run: make all
 
     - name: verilog.pwm_rainbow
-      shell: bash
       working-directory: ./verilog/pwm_rainbow
       run: make all
         
