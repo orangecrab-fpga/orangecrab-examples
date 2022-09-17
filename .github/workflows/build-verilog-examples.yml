@@ -7,7 +7,10 @@ on:
 
 jobs:
   build-verilog-examples:
-    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+      os: [ubuntu-latest, windows-latest, macos-latest]
+
     steps:
     - uses: actions/checkout@v2
       with:
@@ -15,12 +18,7 @@ jobs:
         fetch-depth: 2
 
     - name: configure fpga-toolchain
-      run: |
-        export VERSION=nightly-20200930
-        wget https://github.com/open-tool-forge/fpga-toolchain/releases/download/$VERSION/fpga-toolchain-linux_x86_64-$VERSION.tar.xz
-        tar -xf fpga-toolchain-linux_x86_64-$VERSION.tar.xz
-        rm -rf fpga-toolchain-linux_x86_64-$VERSION.tar.xz
-        echo "$(pwd)/fpga-toolchain/bin" >> $GITHUB_PATH
+      uses: YosysHQ/setup-oss-cad-suite@v1
 
     - name: verilog.blink
       working-directory: ./verilog/blink
@@ -28,5 +26,9 @@ jobs:
 
     - name: verilog.blink_reset
       working-directory: ./verilog/blink_reset
+      run: make all
+
+    - name: verilog.pwm_rainbow
+      working-directory: ./verilog/pwm_rainbow
       run: make all
         
