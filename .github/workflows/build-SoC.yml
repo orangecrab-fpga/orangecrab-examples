@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-SoC:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
       with:
@@ -15,27 +15,15 @@ jobs:
         fetch-depth: 2
 
     - name: configure fpga-toolchain
-      run: |
-        export VERSION=nightly-20200930
-        wget https://github.com/open-tool-forge/fpga-toolchain/releases/download/$VERSION/fpga-toolchain-linux_x86_64-$VERSION.tar.xz
-        tar -xf fpga-toolchain-linux_x86_64-$VERSION.tar.xz
-        rm -rf fpga-toolchain-linux_x86_64-$VERSION.tar.xz
-        echo "$(pwd)/fpga-toolchain/bin" >> $GITHUB_PATH
-
+      uses: YosysHQ/setup-oss-cad-suite@v1
+      
     - name: configure riscv-toolchain
-      run: |
-        wget https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz
-        tar -xzf riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz
-        rm -rf riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14.tar.gz
-        echo "$(pwd)/riscv64-unknown-elf-gcc-8.3.0-2019.08.0-x86_64-linux-ubuntu14/bin" >> $GITHUB_PATH
-
+      uses: gregdavill/setup-riscv-gnu-toolchain@v1.0
+      
     - name: configure python
       working-directory: ./litex
       run: |
-        python3 -m pip install Pillow 
-        python3 -m pip install wheel
-        python3 -m pip install Sphinx 
-        python3 -m pip install sphinxcontrib-wavedrom 
+        python3 -m pip install setuptools wheel Pillow Sphinx sphinxcontrib-wavedrom 
 
     - name: Litex build
       working-directory: ./litex
