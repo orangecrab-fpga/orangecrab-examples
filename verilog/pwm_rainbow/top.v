@@ -44,11 +44,11 @@ module top (
 	wire usr_btn_pressed = 0;
 
 	always @(posedge clk48) begin
-		wheel_counter = wheel_counter + 1;
+		wheel_counter <= wheel_counter + 1;
 		
 		// move wheel_position every time wheel_counter overflows.
 		if (wheel_counter == 0)
-			wheel_position = wheel_position + 1;
+			wheel_position <= wheel_position + 1;
 		
 		// update the rgb duty cycles based on wheel_position position
 		if (wheel_position < 85) begin // blue down red up
