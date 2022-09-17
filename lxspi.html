@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>LXSPI &#8212; OrangeCrab Test SoC  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/default.js"></script>
     <script src="_static/WaveDrom.js"></script>
@@ -36,14 +37,10 @@
           <div class="body" role="main">
             
   <section id="lxspi">
-<h1>LXSPI<a class="headerlink" href="#lxspi" title="Permalink to this headline">¶</a></h1>
+<h1>LXSPI<a class="headerlink" href="#lxspi" title="Permalink to this heading">¶</a></h1>
 <section id="register-listing-for-lxspi">
-<h2>Register Listing for LXSPI<a class="headerlink" href="#register-listing-for-lxspi" title="Permalink to this headline">¶</a></h2>
+<h2>Register Listing for LXSPI<a class="headerlink" href="#register-listing-for-lxspi" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 54%" />
-<col style="width: 46%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Register</p></th>
 <th class="head"><p>Address</p></th>
@@ -62,7 +59,7 @@
 </tbody>
 </table>
 <section id="lxspi-bitbang">
-<h3>LXSPI_BITBANG<a class="headerlink" href="#lxspi-bitbang" title="Permalink to this headline">¶</a></h3>
+<h3>LXSPI_BITBANG<a class="headerlink" href="#lxspi-bitbang" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82007800 + 0x0 = 0x82007800</cite></p>
 <blockquote>
 <div><p>Bitbang controls for SPI output.  Only standard 1x SPI is supported, and as a
@@ -84,11 +81,6 @@ to perform half-duplex operations, using this SPI core.</p>
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 9%" />
-<col style="width: 8%" />
-<col style="width: 83%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -112,10 +104,6 @@ to perform half-duplex operations, using this SPI core.</p>
 <td><p>DIR</p></td>
 <td><p>Sets the direction for <em>ALL</em> SPI data pins except CLK and CSn.</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 22%" />
-<col style="width: 78%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -136,7 +124,7 @@ to perform half-duplex operations, using this SPI core.</p>
 </table>
 </section>
 <section id="lxspi-miso">
-<h3>LXSPI_MISO<a class="headerlink" href="#lxspi-miso" title="Permalink to this headline">¶</a></h3>
+<h3>LXSPI_MISO<a class="headerlink" href="#lxspi-miso" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82007800 + 0x4 = 0x82007804</cite></p>
 <blockquote>
 <div><p>Incoming value of MISO signal.</p>
@@ -154,7 +142,7 @@ to perform half-duplex operations, using this SPI core.</p>
 </div></blockquote>
 </section>
 <section id="lxspi-bitbang-en">
-<h3>LXSPI_BITBANG_EN<a class="headerlink" href="#lxspi-bitbang-en" title="Permalink to this headline">¶</a></h3>
+<h3>LXSPI_BITBANG_EN<a class="headerlink" href="#lxspi-bitbang-en" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82007800 + 0x8 = 0x82007808</cite></p>
 <blockquote>
 <div><p>Write a <code class="docutils literal notranslate"><span class="pre">1</span></code> here to disable memory-mapped mode and enable bitbang mode.</p>
@@ -225,12 +213,12 @@ to perform half-duplex operations, using this SPI core.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -244,10 +232,10 @@ to perform half-duplex operations, using this SPI core.</p>
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Greg Davill.
+      &copy;2022, Greg Davill.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

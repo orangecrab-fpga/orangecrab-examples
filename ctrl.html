@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>CTRL &#8212; OrangeCrab Test SoC  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/default.js"></script>
     <script src="_static/WaveDrom.js"></script>
@@ -36,14 +37,10 @@
           <div class="body" role="main">
             
   <section id="ctrl">
-<h1>CTRL<a class="headerlink" href="#ctrl" title="Permalink to this headline">¶</a></h1>
+<h1>CTRL<a class="headerlink" href="#ctrl" title="Permalink to this heading">¶</a></h1>
 <section id="register-listing-for-ctrl">
-<h2>Register Listing for CTRL<a class="headerlink" href="#register-listing-for-ctrl" title="Permalink to this headline">¶</a></h2>
+<h2>Register Listing for CTRL<a class="headerlink" href="#register-listing-for-ctrl" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 53%" />
-<col style="width: 47%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Register</p></th>
 <th class="head"><p>Address</p></th>
@@ -62,7 +59,7 @@
 </tbody>
 </table>
 <section id="ctrl-reset">
-<h3>CTRL_RESET<a class="headerlink" href="#ctrl-reset" title="Permalink to this headline">¶</a></h3>
+<h3>CTRL_RESET<a class="headerlink" href="#ctrl-reset" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82000000 + 0x0 = 0x82000000</cite></p>
 <blockquote>
 <div><p>Write a <code class="docutils literal notranslate"><span class="pre">1</span></code> to this register to reset the SoC.</p>
@@ -80,7 +77,7 @@
 </div></blockquote>
 </section>
 <section id="ctrl-scratch">
-<h3>CTRL_SCRATCH<a class="headerlink" href="#ctrl-scratch" title="Permalink to this headline">¶</a></h3>
+<h3>CTRL_SCRATCH<a class="headerlink" href="#ctrl-scratch" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82000000 + 0x4 = 0x82000004</cite></p>
 <blockquote>
 <div><p>Use this register as a scratch space to verify that software read/write accesses
@@ -99,7 +96,7 @@ to the Wishbone/CSR bus are working correctly. The initial reset value of
 </div></blockquote>
 </section>
 <section id="ctrl-bus-errors">
-<h3>CTRL_BUS_ERRORS<a class="headerlink" href="#ctrl-bus-errors" title="Permalink to this headline">¶</a></h3>
+<h3>CTRL_BUS_ERRORS<a class="headerlink" href="#ctrl-bus-errors" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82000000 + 0x8 = 0x82000008</cite></p>
 <blockquote>
 <div><p>Total number of Wishbone bus errors (timeouts) since start.</p>
@@ -169,12 +166,12 @@ to the Wishbone/CSR bus are working correctly. The initial reset value of
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -188,10 +185,10 @@ to the Wishbone/CSR bus are working correctly. The initial reset value of
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Greg Davill.
+      &copy;2022, Greg Davill.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

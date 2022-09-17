@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>GPIO &#8212; OrangeCrab Test SoC  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,6 +12,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/default.js"></script>
     <script src="_static/WaveDrom.js"></script>
@@ -36,14 +37,10 @@
           <div class="body" role="main">
             
   <section id="gpio">
-<h1>GPIO<a class="headerlink" href="#gpio" title="Permalink to this headline">¶</a></h1>
+<h1>GPIO<a class="headerlink" href="#gpio" title="Permalink to this heading">¶</a></h1>
 <section id="register-listing-for-gpio">
-<h2>Register Listing for GPIO<a class="headerlink" href="#register-listing-for-gpio" title="Permalink to this headline">¶</a></h2>
+<h2>Register Listing for GPIO<a class="headerlink" href="#register-listing-for-gpio" title="Permalink to this heading">¶</a></h2>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Register</p></th>
 <th class="head"><p>Address</p></th>
@@ -101,7 +98,7 @@
 </tbody>
 </table>
 <section id="gpio-oe">
-<h3>GPIO_OE<a class="headerlink" href="#gpio-oe" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_OE<a class="headerlink" href="#gpio-oe" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x0 = 0x82005800</cite></p>
 <blockquote>
 <div><p>GPIO Tristate(s) Control. Write <code class="docutils literal notranslate"><span class="pre">1</span></code> enable output driver</p>
@@ -133,11 +130,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 16%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -201,7 +193,7 @@
 </table>
 </section>
 <section id="gpio-in">
-<h3>GPIO_IN<a class="headerlink" href="#gpio-in" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_IN<a class="headerlink" href="#gpio-in" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x4 = 0x82005804</cite></p>
 <blockquote>
 <div><p>GPIO Input(s) Status. Input value of IO pad as read by the FPGA</p>
@@ -233,11 +225,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 16%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -301,7 +288,7 @@
 </table>
 </section>
 <section id="gpio-out">
-<h3>GPIO_OUT<a class="headerlink" href="#gpio-out" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_OUT<a class="headerlink" href="#gpio-out" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x8 = 0x82005808</cite></p>
 <blockquote>
 <div><p>GPIO Ouptut(s) Control. Value loaded into the output driver</p>
@@ -333,11 +320,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 19%" />
-<col style="width: 16%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -401,7 +383,7 @@
 </table>
 </section>
 <section id="gpio-alt0">
-<h3>GPIO_ALT0<a class="headerlink" href="#gpio-alt0" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT0<a class="headerlink" href="#gpio-alt0" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0xc = 0x8200580c</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -418,11 +400,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -434,10 +411,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -455,7 +428,7 @@
 </table>
 </section>
 <section id="gpio-alt1">
-<h3>GPIO_ALT1<a class="headerlink" href="#gpio-alt1" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT1<a class="headerlink" href="#gpio-alt1" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x10 = 0x82005810</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -472,11 +445,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -488,10 +456,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -509,7 +473,7 @@
 </table>
 </section>
 <section id="gpio-alt5">
-<h3>GPIO_ALT5<a class="headerlink" href="#gpio-alt5" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT5<a class="headerlink" href="#gpio-alt5" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x14 = 0x82005814</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -526,11 +490,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -542,10 +501,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -563,7 +518,7 @@
 </table>
 </section>
 <section id="gpio-alt6">
-<h3>GPIO_ALT6<a class="headerlink" href="#gpio-alt6" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT6<a class="headerlink" href="#gpio-alt6" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x18 = 0x82005818</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -580,11 +535,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -596,10 +546,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -617,7 +563,7 @@
 </table>
 </section>
 <section id="gpio-alt9">
-<h3>GPIO_ALT9<a class="headerlink" href="#gpio-alt9" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT9<a class="headerlink" href="#gpio-alt9" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x1c = 0x8200581c</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -634,11 +580,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -650,10 +591,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -671,7 +608,7 @@
 </table>
 </section>
 <section id="gpio-alt10">
-<h3>GPIO_ALT10<a class="headerlink" href="#gpio-alt10" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT10<a class="headerlink" href="#gpio-alt10" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x20 = 0x82005820</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -688,11 +625,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -704,10 +636,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -725,7 +653,7 @@
 </table>
 </section>
 <section id="gpio-alt11">
-<h3>GPIO_ALT11<a class="headerlink" href="#gpio-alt11" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT11<a class="headerlink" href="#gpio-alt11" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x24 = 0x82005824</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -742,11 +670,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -758,10 +681,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -779,7 +698,7 @@
 </table>
 </section>
 <section id="gpio-alt12">
-<h3>GPIO_ALT12<a class="headerlink" href="#gpio-alt12" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT12<a class="headerlink" href="#gpio-alt12" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x28 = 0x82005828</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -796,11 +715,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -812,10 +726,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -833,7 +743,7 @@
 </table>
 </section>
 <section id="gpio-alt13">
-<h3>GPIO_ALT13<a class="headerlink" href="#gpio-alt13" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT13<a class="headerlink" href="#gpio-alt13" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x2c = 0x8200582c</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -850,11 +760,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -866,10 +771,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -887,7 +788,7 @@
 </table>
 </section>
 <section id="gpio-alt18">
-<h3>GPIO_ALT18<a class="headerlink" href="#gpio-alt18" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT18<a class="headerlink" href="#gpio-alt18" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x30 = 0x82005830</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -904,11 +805,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -920,10 +816,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -941,7 +833,7 @@
 </table>
 </section>
 <section id="gpio-alt19">
-<h3>GPIO_ALT19<a class="headerlink" href="#gpio-alt19" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT19<a class="headerlink" href="#gpio-alt19" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x34 = 0x82005834</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -958,11 +850,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -974,10 +861,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -995,7 +878,7 @@
 </table>
 </section>
 <section id="gpio-alt20">
-<h3>GPIO_ALT20<a class="headerlink" href="#gpio-alt20" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT20<a class="headerlink" href="#gpio-alt20" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x38 = 0x82005838</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -1012,11 +895,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -1028,10 +906,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -1049,7 +923,7 @@
 </table>
 </section>
 <section id="gpio-alt21">
-<h3>GPIO_ALT21<a class="headerlink" href="#gpio-alt21" title="Permalink to this headline">¶</a></h3>
+<h3>GPIO_ALT21<a class="headerlink" href="#gpio-alt21" title="Permalink to this heading">¶</a></h3>
 <p><cite>Address: 0x82005800 + 0x3c = 0x8200583c</cite></p>
 <blockquote>
 <div><p>GPIO Alt Control. IO pin alternative functions</p>
@@ -1066,11 +940,6 @@
 </div>
 </div></blockquote>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 13%" />
-<col style="width: 12%" />
-<col style="width: 75%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Field</p></th>
 <th class="head"><p>Name</p></th>
@@ -1082,10 +951,6 @@
 <td><p>CTRL</p></td>
 <td><p>Select alternative function on IO pin</p>
 <table class="docutils align-default">
-<colgroup>
-<col style="width: 35%" />
-<col style="width: 65%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Value</p></th>
 <th class="head"><p>Description</p></th>
@@ -1156,12 +1021,12 @@
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -1175,10 +1040,10 @@
       <div class="clearer"></div>
     </div>
     <div class="footer">
-      &copy;2021, Greg Davill.
+      &copy;2022, Greg Davill.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.1.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
