@@ -44,8 +44,8 @@ jobs:
     - name: configure fpga-toolchain
       run: |
         C:\msys64\usr\bin\wget.exe https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2022-09-17/oss-cad-suite-windows-x64-20220917.exe
-        oss-cad-suite-windows-x64-20220917.exe
-        oss-cad-suite\environment.bat
+        .\oss-cad-suite-windows-x64-20220917.exe
+        .\oss-cad-suite\environment.bat
 
     - name: verilog.blink
       working-directory: ./verilog/blink
