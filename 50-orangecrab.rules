@@ -1,0 +1,18 @@
+# UDEV Rules for OrangeCrab boards
+#
+# This will allow reflashing with DFU-util without using sudo
+#
+# This file must be placed at:
+#
+#   /etc/udev/rules.d/50-orangecrab.rules    (preferred location)
+#
+# To install, type this command in a terminal:
+#   sudo cp 50-orangecrab.rules /etc/udev/rules.d/50-orangecrab.rules
+#
+# After this file is installed, physically unplug and reconnect the
+# orangecrab device.
+#
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="5af0", GROUP="plugdev", MODE="0666"
+
+# This file is derived from the Teensy UDEV rules
+# http://www.pjrc.com/teensy/49-teensy.rules
