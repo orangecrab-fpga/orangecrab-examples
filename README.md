@@ -16,3 +16,6 @@ This gateware can be loaded onto the OrangeCrab using its DFU bootloader.
 
 * __verilog.blink__ - The most basic verilog example. Blink a LED with gateware
 
+## Amaranth examples
+These example use Amaranth + Yosys, to synthesis (or compile) the Python based hardware description language into gateware. 
+Amaranth will by default then automatically load the gateware onto the OrangeCrab using its DFU bootloader.
