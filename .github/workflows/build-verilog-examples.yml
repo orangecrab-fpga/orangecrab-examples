@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        submodules: false
+        submodules: true
 
     - name: configure fpga-toolchain
       run: |
@@ -31,6 +31,10 @@ jobs:
 
     - name: verilog.pwm_rainbow
       working-directory: ./verilog/pwm_rainbow
+      run: make all
+    
+    - name: verilog.usb_acm_device
+      working-directory: ./verilog/usb_acm_device
       run: make all
         
 
@@ -60,4 +64,7 @@ jobs:
     - name: verilog.pwm_rainbow
       working-directory: ./verilog/pwm_rainbow
       run: make all
-        
+    
+    - name: verilog.usb_acm_device
+      working-directory: ./verilog/usb_acm_device
+      run: make all        

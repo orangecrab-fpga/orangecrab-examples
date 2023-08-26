@@ -20,3 +20,6 @@
 [submodule "litex/deps/pythondata-software-compiler_rt"]
 	path = litex/deps/pythondata-software-compiler_rt
 	url = https://github.com/litex-hub/pythondata-software-compiler_rt.git
+[submodule "verilog/usb_acm_device/blocks/usbserial"]
+	path = verilog/usb_acm_device/blocks/usbserial
+	url = https://github.com/davidthings/tinyfpga_bx_usbserial.git
