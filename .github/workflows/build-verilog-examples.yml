@@ -48,7 +48,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        submodules: false
+        submodules: true
 
     - name: configure fpga-toolchain
       run: |
