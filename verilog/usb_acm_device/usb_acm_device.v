@@ -1,8 +1,6 @@
 /*
-    USB Serial
-
-    Wrapping usb/usb_uart_ice40.v to create a loopback.
-*/
+ *  Create USB device on the OrangeCrab using verilog
+ */
 
 module usb_acm_device (
         input  clk48,
