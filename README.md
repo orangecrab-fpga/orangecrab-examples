@@ -16,3 +16,18 @@ This gateware can be loaded onto the OrangeCrab using its DFU bootloader.
 
 * __verilog.blink__ - The most basic verilog example. Blink a LED with gateware
 
+## Amaranth examples
+These example use Amaranth + Yosys, to synthesis (or compile) the Python based hardware description language into gateware. 
+Amaranth will by default then automatically load the gateware onto the OrangeCrab using its DFU bootloader.
+
+## Miscellaneous
+If you are using a recent version of Ubuntu, you will not be able to access the dfu bootloader using normal permissions.
+You can use the included udev rule `50-orangecrab.rules` to grant access to the orangecrab device to the `plugdev` group.
+
+To install, type this command in a terminal:
+
+```bash
+$ sudo cp 50-orangecrab.rules /etc/udev/rules.d/50-orangecrab.rules
+```
+
+After this file is installed, physically unplug and reconnect the orangecrab device.

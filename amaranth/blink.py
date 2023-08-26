@@ -1,7 +1,7 @@
 # Blink the three LEDs in a counting pattern.
 
-from nmigen import *
-from nmigen_boards.orangecrab_r0_2 import *
+from amaranth import *
+from amaranth_boards.orangecrab_r0_2 import *
 
 
 class Blink(Elaboratable):
