@@ -25,6 +25,10 @@ jobs:
       working-directory: ./verilog/blink
       run: make all
 
+    - name: verilog.blink
+      working-directory: ./verilog/blink
+      run: make DENSITY=85F all
+      
     - name: verilog.blink_reset
       working-directory: ./verilog/blink_reset
       run: make all
@@ -36,6 +40,7 @@ jobs:
     - name: verilog.usb_acm_device
       working-directory: ./verilog/usb_acm_device
       run: make all
+
         
 
   build-verilog-examples-win64:
