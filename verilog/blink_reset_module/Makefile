@@ -1,7 +1,15 @@
 PROJ=blink_reset_module
 
-# `r0.1` or `r0.2`
-VERSION:=r0.2
+# `r0.1` or `r0.2` or `r0.2.1`
+VERSION:=r0.2.1
+# `25F` or `85F`
+DENSITY=25F
+
+ifneq (,$(findstring 85,$(DENSITY)))
+	NEXTPNR_DENSITY:=--85k
+else
+	NEXTPNR_DENSITY:=--25k
+endif
 
 # Add Windows and Unix support
 RM         = rm -rf
@@ -25,14 +33,14 @@ endif
 all: ${PROJ}.dfu
 
 dfu: ${PROJ}.dfu
-	dfu-util -D $<
+	dfu-util --alt 0 -D $<
 
 
 %.json: %.v
 	yosys -p "read_verilog $<; synth_ecp5 -json $@"
 
 %_out.config: %.json
-	nextpnr-ecp5 --json $< --textcfg $@ --25k --package CSFBGA285 --lpf ..$(PATH_SEP)orangecrab_${VERSION}.pcf
+	nextpnr-ecp5 --json $< --textcfg $@ $(NEXTPNR_DENSITY) --package CSFBGA285 --lpf ..$(PATH_SEP)orangecrab_${VERSION}.pcf
 
 %.bit: %_out.config
 	ecppack --compress --freq 38.8 --input $< --bit $@

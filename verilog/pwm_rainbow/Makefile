@@ -6,8 +6,16 @@ TOP_SIMULATION_MODULE=sim
 # with a 48 MHz clock, this would be one ms of simulation.
 SIMULATION_CYCLES=48000
 
-# Specify hardware revision of your OrangeCrab: `r0.1` or `r0.2`
-VERSION:=r0.2
+# Specify hardware revision of your OrangeCrab: `r0.1` or `r0.2` or `r0.2.1`
+VERSION:=r0.2.1
+# `25F` or `85F`
+DENSITY=25F
+
+ifneq (,$(findstring 85,$(DENSITY)))
+	NEXTPNR_DENSITY:=--85k
+else
+	NEXTPNR_DENSITY:=--25k
+endif
 
 # By default, we will read all verilog files (.v) in this directory.
 VERILOG_FILES=$(wildcard *.v)
@@ -33,7 +41,7 @@ endif
 all: $(PROJ).dfu
 
 dfu: $(PROJ).dfu
-	dfu-util -D $<
+	dfu-util --alt 0 -D $<
 	
 # We don't actually need to do anything to verilog files.
 # This explicitly empty recipe is merely referenced from
@@ -65,7 +73,7 @@ dfu: $(PROJ).dfu
 
 # Run nextpnr-ecp5 to place the logic components and route the nets to pins.
 %_out.config: %.json
-	nextpnr-ecp5 --json $< --textcfg $@ --25k --package CSFBGA285 --lpf ..$(PATH_SEP)orangecrab_${VERSION}.pcf
+	nextpnr-ecp5 --json $< --textcfg $@ $(NEXTPNR_DENSITY) --package CSFBGA285 --lpf ..$(PATH_SEP)orangecrab_${VERSION}.pcf
 
 # Generate the final bitstream from the pnr output.
 %.bit: %_out.config
