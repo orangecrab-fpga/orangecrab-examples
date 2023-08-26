@@ -15,7 +15,7 @@ jobs:
 
     - name: configure fpga-toolchain
       run: |
-        export VERSION=2022-09-17
+        export VERSION=2023-08-25
         wget https://github.com/YosysHQ/oss-cad-suite-build/releases/download/$VERSION/oss-cad-suite-linux-x64-$(echo $VERSION | sed 's/-//g').tgz
         tar -xf oss-cad-suite-linux-x64-$(echo $VERSION | sed 's/-//g').tgz
         rm -rf oss-cad-suite-linux-x64-$(echo $VERSION | sed 's/-//g').tgz
@@ -47,8 +47,8 @@ jobs:
 
     - name: configure fpga-toolchain
       run: |
-        C:\msys64\usr\bin\wget.exe https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2022-09-17/oss-cad-suite-windows-x64-20220917.exe
-        .\oss-cad-suite-windows-x64-20220917.exe
+        C:\msys64\usr\bin\wget.exe https://github.com/YosysHQ/oss-cad-suite-build/releases/download/2023-08-25/oss-cad-suite-windows-x64-20230825.exe
+        .\oss-cad-suite-windows-x64-20230825.exe
         Add-Content $env:GITHUB_PATH "$env:GITHUB_WORKSPACE/oss-cad-suite/bin"
         Add-Content $env:GITHUB_PATH "$env:GITHUB_WORKSPACE/oss-cad-suite/lib"
         
