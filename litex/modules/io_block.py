@@ -3,7 +3,7 @@
 
 from migen import *
 
-from litex.soc.interconnect.csr import AutoCSR, CSRStorage, CSRField, CSRStatus
+from litex.soc.interconnect.csr import AutoCSR, CSRStorage, CSRField, CSRStatus, CSRAccess
 from migen.genlib.cdc import MultiReg
 
 def io_pins():
@@ -42,21 +42,27 @@ class IOPort(Module, AutoCSR):
     def __init__(self, pads):
         self.alt_fields = ["csr_control"]
 
-        
         pins  = [0,1,5,6,9,10,11,12,13,18,19,20,21]
         nbits = len(pins)
         fields= []
+        fields_read = []
 
 
         for n in pins:
             fields += [
-                CSRField(f"io{n}", 1, n ,description=f"Control for I/O pin {n}"),
+                CSRField(f"io{n}", 1, n ,description=f"Control for I/O pin {n}", access=CSRAccess.ReadWrite),
             ]
+        for n in pins:
+            fields_read += [
+                CSRField(f"io{n}", 1, n ,description=f"Control for I/O pin {n}", access=CSRAccess.ReadOnly),
+            ]
+
+
 
         self._oe  = CSRStorage(nbits, description="""GPIO Tristate(s) Control.
         Write ``1`` enable output driver""", fields=fields)
         self._in  = CSRStatus(nbits,  description="""GPIO Input(s) Status.
-        Input value of IO pad as read by the FPGA""", fields=fields)
+        Input value of IO pad as read by the FPGA""", fields=fields_read)
         self._out = CSRStorage(nbits, description="""GPIO Ouptut(s) Control.
         Value loaded into the output driver""", fields=fields)
 

@@ -24,7 +24,7 @@ import inspect
 from migen import *
 from migen.genlib.resetsync import AsyncResetSynchronizer
 
-from litex_boards.platforms import orangecrab
+from litex_boards.platforms import gsd_orangecrab
 #from litex_boards.targets.orangecrab import _CRG
 
 from litex.build.lattice.trellis import trellis_args, trellis_argdict
@@ -33,7 +33,6 @@ from litex.build.generic_platform import IOStandard, Subsignal, Pins, Misc
 
 from litex.soc.cores.clock import *
 from litex.soc.integration.soc_core import *
-from litex.soc.integration.soc_sdram import *
 from litex.soc.integration.builder import *
 
 from litedram.modules import MT41K64M16, MT41K128M16, MT41K256M16, MT41K512M16
@@ -90,7 +89,6 @@ class CRG(Module):
         self.stop = Signal()
         self.reset = Signal()
 
-        
         # Use OSCG for generating por clocks.
         osc_g = Signal()
         self.specials += Instance("OSCG",
@@ -186,7 +184,7 @@ class BaseSoC(SoCCore):
         revision = kwargs.get("revision", "0.2")
         device = kwargs.get("device", "25F")
 
-        platform = orangecrab.Platform(revision=revision, device=device ,toolchain=toolchain)
+        platform = gsd_orangecrab.Platform(revision=revision, device=device ,toolchain=toolchain)
 
         platform.add_extension(extras)
 
@@ -194,7 +192,7 @@ class BaseSoC(SoCCore):
         kwargs['uart_name']="stream"
 
         # SoCCore ----------------------------------------------------------------------------------
-        SoCCore.__init__(self, platform, clk_freq=sys_clk_freq, csr_data_width=32, **kwargs)
+        SoCCore.__init__(self, platform, clk_freq=sys_clk_freq, **kwargs)
 
         # connect UART stream to NULL
         self.comb += self.uart.source.ready.eq(1)
@@ -253,18 +251,15 @@ class BaseSoC(SoCCore):
 
         # The litex SPI module supports memory-mapped reads, as well as a bit-banged mode
         # for doing writes.
-        spi_pads = platform.request("spiflash4x")
-        self.submodules.lxspi = spi_flash.SpiFlashDualQuad(spi_pads, dummy=6, endianness="little")
-        self.lxspi.add_clk_primitive(platform.device)
-        self.register_mem("spiflash", self.mem_map["spiflash"], self.lxspi.bus, size=16*1024*1024)
-
+        from litespi.modules import W25Q128JV
+        from litespi.opcodes import SpiNorFlashOpCodes as Codes
+        self.add_spi_flash(mode='4x', module=W25Q128JV(Codes.READ_1_1_4), with_master=False)
 
         # Attach USB to a seperate CSR bus that's decoupled from our CPU clock
         usb_pads = platform.request("usb")
         usb_iobuf = usbio.IoBuf(usb_pads.d_p, usb_pads.d_n, usb_pads.pullup)
         self.submodules.usb0 = CSRClockDomainWrapper(usb_iobuf)
         self.comb += self.cpu.interrupt[self.interrupt_map['usb']].eq(self.usb0.irq)
-
         from litex.soc.integration.soc_core import SoCRegion
         self.bus.add_slave('usb',  self.usb0.bus, SoCRegion(origin=0x90000000, size=0x1000, cached=False))
 
@@ -289,7 +284,7 @@ def main():
     parser.add_argument("--gateware-toolchain", dest="toolchain", default="trellis",
         help="gateware toolchain to use, trellis (default) or diamond")
     builder_args(parser)
-    soc_sdram_args(parser)
+    soc_core_args(parser)
     trellis_args(parser)
     parser.add_argument("--sys-clk-freq", default=48e6,
                         help="system clock frequency (default=48MHz)")
@@ -331,7 +326,7 @@ def main():
     os.system(f"dfu-suffix -v 1209 -p 5af0 -a {dfu_file}")
 
 def argdict(args):
-    r = soc_sdram_argdict(args)
+    r = soc_core_argdict(args)
     for a in ["device", "revision", "sdram_device"]:
         arg = getattr(args, a, None)
         if arg is not None:
