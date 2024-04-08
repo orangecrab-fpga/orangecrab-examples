@@ -26,7 +26,7 @@ Assuming you are using Ubuntu or Debian Linux, you will need:
    permissions for `1209:5af0` if you have not already done so. You also need
    to have `dfu-util` installed (e.g. `sudo apt install dfu-util`).
 
-3. Load the new firmware into the `-d 1209:5af0 --alt=0` DFU device with
+3. Load the new firmware into the `-d 1209:5af0 --alt 0` DFU device with
    ```console
    $ make dfu_85F
    ```
