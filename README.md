@@ -31,3 +31,7 @@ $ sudo cp 50-orangecrab.rules /etc/udev/rules.d/50-orangecrab.rules
 ```
 
 After this file is installed, physically unplug and reconnect the orangecrab device.
+
+## RISC-V Cross Compiler Toolchain
+
+To cross-compile for the bootloader's VexRiscv rv32i processor, you need a RISC-V compiler toolchain that includes support libraries for rv32i. Debian and Ubuntu currently have riscv64-unknown-elf compilers that will cross-compile for rv32i. But, to use those, you would need to build your own support libraries (libc, etc). For a ready-to-use option, you can download an embedded RISC-V toolchain from Embecosm's [Tool Chain Downloads](https://www.embecosm.com/resources/tool-chain-downloads/#riscv-stable) page.
